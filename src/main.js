@@ -69,22 +69,12 @@ document.addEventListener('keydown', (e) => {
 
 /* ---------- nav active state ---------- */
 const navLinks = [...document.querySelectorAll('.nav a')];
-const sections = navLinks
-  .map((a) => document.querySelector(a.getAttribute('href')))
-  .filter(Boolean);
 
-const io = new IntersectionObserver(
-  (entries) => {
-    entries.forEach((entry) => {
-      if (!entry.isIntersecting) return;
-      navLinks.forEach((a) =>
-        a.classList.toggle('active', a.getAttribute('href') === `#${entry.target.id}`)
-      );
-    });
-  },
-  { rootMargin: '-40% 0px -55% 0px' }
-);
-sections.forEach((s) => io.observe(s));
+navLinks.forEach((a) => {
+  a.addEventListener('click', () => {
+    navLinks.forEach((link) => link.classList.toggle('active', link === a));
+  });
+});
 
 /* ---------- misc ---------- */
 document.getElementById('year').textContent = new Date().getFullYear();
