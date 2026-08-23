@@ -231,21 +231,21 @@ main {
   list-style: none;
   display: flex;
   flex-wrap: wrap;
-  gap: 0.5rem;
+  align-items: center;
+  row-gap: 0.4rem;
   margin-top: 1.5rem;
-}
-
-.tools li {
-  border: 1px solid var(--line);
-  padding: 3px 10px;
   font-size: 10px;
   letter-spacing: 0.14em;
   color: var(--dim);
-  background: linear-gradient(180deg, rgba(255, 255, 255, 0.05), rgba(255, 255, 255, 0));
-  transition: color 0.25s ease, border-color 0.25s ease;
 }
 
-.tools li:hover { color: var(--fg); border-color: var(--line-strong); }
+.tools li { display: inline-flex; align-items: center; }
+
+.tools li + li::before {
+  content: "|";
+  margin-inline: 0.55rem;
+  color: var(--line-strong);
+}
 
 .status {
   display: flex;
