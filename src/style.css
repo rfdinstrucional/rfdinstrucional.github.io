@@ -7,6 +7,18 @@
   --line-strong: rgba(255, 255, 255, 0.6);
   --grad: linear-gradient(90deg, rgba(255, 255, 255, 0) 0%, rgba(255, 255, 255, 0.14) 50%, rgba(255, 255, 255, 0) 100%);
   --font: 'JetBrains Mono', ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+
+  /* glass surfaces */
+  --glass-surface:
+    linear-gradient(180deg, rgba(255, 255, 255, 0.03), rgba(255, 255, 255, 0)),
+    rgba(0, 0, 0, 0.45);
+  --glass-lift: rgba(255, 255, 255, 0.08);
+  --glass-edge: rgba(255, 255, 255, 0.18);
+  --blur-glass: blur(10px);
+
+  /* motion */
+  --t-fast: 0.25s;
+  --t-ease: cubic-bezier(0.23, 1, 0.32, 1);
 }
 
 * { box-sizing: border-box; margin: 0; padding: 0; }
@@ -72,21 +84,22 @@ main, footer.site-footer {
   text-decoration: none;
   font-size: 11px;
   letter-spacing: 0.18em;
-  padding: 4px 0;
-  transition: color 0.25s ease;
+  padding: 6px 12px;
+  transition: color var(--t-fast) ease, background var(--t-fast) ease, box-shadow var(--t-fast) ease;
 }
 
 .nav a::after {
   content: '';
   position: absolute;
-  left: 0;
-  bottom: 0;
-  width: 100%;
+  left: 12px;
+  right: 12px;
+  bottom: 2px;
+  width: auto;
   height: 1px;
   background: var(--fg);
   transform: scaleX(0);
   transform-origin: left;
-  transition: transform 0.3s cubic-bezier(0.23, 1, 0.32, 1);
+  transition: transform 0.3s var(--t-ease);
 }
 
 .nav a:hover,
@@ -94,6 +107,13 @@ main, footer.site-footer {
 
 .nav a:hover::after,
 .nav a.active::after { transform: scaleX(1); }
+
+.nav a:hover {
+  background: var(--glass-lift);
+  -webkit-backdrop-filter: var(--blur-glass);
+  backdrop-filter: var(--blur-glass);
+  box-shadow: inset 0 0 0 1px var(--glass-edge);
+}
 
 /* ---------- layout ---------- */
 main {
@@ -127,12 +147,10 @@ main {
 
 .card {
   border: 1px solid var(--line);
-  background:
-    linear-gradient(180deg, rgba(255, 255, 255, 0.03), rgba(255, 255, 255, 0)),
-    rgba(0, 0, 0, 0.45);
-  backdrop-filter: blur(10px);
-  -webkit-backdrop-filter: blur(10px);
-  transition: border-color 0.3s ease;
+  background: var(--glass-surface);
+  backdrop-filter: var(--blur-glass);
+  -webkit-backdrop-filter: var(--blur-glass);
+  transition: border-color var(--t-fast) ease;
 }
 
 .card:hover { border-color: var(--line-strong); }
@@ -229,17 +247,13 @@ main {
 
 .tools {
   list-style: none;
-  display: flex;
-  flex-wrap: wrap;
-  align-items: center;
-  row-gap: 0.4rem;
   margin-top: 1.5rem;
   font-size: 10px;
   letter-spacing: 0.14em;
   color: var(--dim);
 }
 
-.tools li { display: inline-flex; align-items: center; }
+.tools li { display: inline; }
 
 .tools li + li::before {
   content: "|";
@@ -276,9 +290,9 @@ main {
   grid-template-columns: repeat(3, 1fr);
   border-top: 1px solid var(--line);
   border-left: 1px solid var(--line);
-  background: rgba(0, 0, 0, 0.45);
-  backdrop-filter: blur(10px);
-  -webkit-backdrop-filter: blur(10px);
+  background: var(--glass-surface);
+  backdrop-filter: var(--blur-glass);
+  -webkit-backdrop-filter: var(--blur-glass);
 }
 
 .tile {
@@ -312,7 +326,7 @@ main {
   color: var(--faint);
   opacity: 0;
   transform: translate(-4px, 4px);
-  transition: all 0.3s cubic-bezier(0.23, 1, 0.32, 1);
+  transition: all 0.3s var(--t-ease);
 }
 
 .tile-sweep {
@@ -377,12 +391,15 @@ main {
   letter-spacing: 0.2em;
   border-right: 1px solid var(--line);
   border-bottom: 1px solid var(--line);
-  transition: color 0.25s ease, background 0.25s ease;
+  transition: color var(--t-fast) ease, background var(--t-fast) ease, box-shadow var(--t-fast) ease;
 }
 
 .contact-links a:hover {
-  color: #000;
-  background: rgba(255, 255, 255, 0.92);
+  color: var(--fg);
+  background: var(--glass-lift);
+  -webkit-backdrop-filter: var(--blur-glass);
+  backdrop-filter: var(--blur-glass);
+  box-shadow: inset 0 0 0 1px var(--glass-edge);
 }
 
 /* ---------- footer ---------- */
@@ -394,11 +411,9 @@ main {
   width: 100%;
   padding: 1.25rem clamp(1rem, 4vw, 3rem) 2rem;
   border-top: 1px solid var(--line);
-  background:
-    linear-gradient(180deg, rgba(255, 255, 255, 0.02), rgba(255, 255, 255, 0)),
-    rgba(0, 0, 0, 0.45);
-  backdrop-filter: blur(10px);
-  -webkit-backdrop-filter: blur(10px);
+  background: var(--glass-surface);
+  backdrop-filter: var(--blur-glass);
+  -webkit-backdrop-filter: var(--blur-glass);
   font-size: 11px;
   letter-spacing: 0.16em;
   color: rgba(255, 255, 255, 0.7);
@@ -425,7 +440,7 @@ main {
   border: 1px solid var(--line-strong);
   background: linear-gradient(180deg, rgba(10, 10, 10, 0.98), rgba(0, 0, 0, 0.98));
   padding: clamp(1.5rem, 4vw, 2.5rem);
-  animation: modal-in 0.25s cubic-bezier(0.23, 1, 0.32, 1);
+  animation: modal-in 0.25s var(--t-ease);
 }
 
 @keyframes modal-in {
