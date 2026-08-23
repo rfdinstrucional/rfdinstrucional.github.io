@@ -1,0 +1,132 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="Rafael Fernando — Instructional Designer" />
+    <title>Rafael Fernando | Instructional Designer</title>
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@100;200;300;400;500&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <canvas id="bg-shader" aria-hidden="true"></canvas>
+
+    <header class="site-header">
+      <nav class="nav" aria-label="Main navigation">
+        <a href="#home">HOME</a>
+        <a href="#about">ABOUT</a>
+        <a href="#portfolio">PORTFOLIO</a>
+        <a href="#contact">CONTACT</a>
+      </nav>
+    </header>
+
+    <main id="home">
+      <!-- ABOUT -->
+      <section id="about" class="section">
+        <div class="section-head">
+          <span class="section-index">[01]</span>
+          <h2>ABOUT</h2>
+          <span class="section-line"></span>
+        </div>
+
+        <div class="card about-card">
+          <figure class="about-photo">
+            <img src="/avatar.svg" alt="Portrait photo" width="320" height="380" />
+          </figure>
+
+          <div class="about-body">
+            <h1 class="about-name">
+              RAFAEL FERNANDO<span class="cursor">▌</span>
+            </h1>
+            <p class="about-role">// INSTRUCTIONAL DESIGNER</p>
+
+            <p class="about-text">
+              Lorem ipsum dolor sit amet, consectetur adipiscing elit. I build
+              interfaces, tools and experiments at the intersection of code and
+              design. Terminal aesthetics, minimal pixels, maximum intent.
+              This description will be replaced soon.
+            </p>
+
+            <ul class="tools" aria-label="Tools">
+              <li>JAVASCRIPT</li>
+              <li>TYPESCRIPT</li>
+              <li>REACT</li>
+              <li>NODE</li>
+              <li>GLSL</li>
+              <li>FIGMA</li>
+              <li>GIT</li>
+              <li>VITE</li>
+            </ul>
+
+            <p class="status">
+              <span class="status-dot" aria-hidden="true"></span>
+              STATUS: OPEN TO WORK
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <!-- PORTFOLIO -->
+      <section id="portfolio" class="section">
+        <div class="section-head">
+          <span class="section-index">[02]</span>
+          <h2>PORTFOLIO</h2>
+          <span class="section-line"></span>
+        </div>
+
+        <div class="grid" id="gallery"><!-- tiles injected by JS --></div>
+      </section>
+
+      <!-- CONTACT -->
+      <section id="contact" class="section">
+        <div class="section-head">
+          <span class="section-index">[03]</span>
+          <h2>CONTACT</h2>
+          <span class="section-line"></span>
+        </div>
+
+        <div class="card contact-card">
+          <nav class="contact-links" aria-label="Contact links">
+            <a href="mailto:hello@example.com">EMAIL</a>
+            <a href="https://github.com/rfdinstrucional" target="_blank" rel="noopener noreferrer">GITHUB</a>
+            <a href="#" target="_blank" rel="noopener noreferrer">LINKEDIN</a>
+            <a href="#" target="_blank" rel="noopener noreferrer">X / TWITTER</a>
+          </nav>
+        </div>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <span><span id="year"></span> | rfdinstrucional</span>
+    </footer>
+
+    <!-- MODAL -->
+    <div class="modal" id="modal" role="dialog" aria-modal="true" aria-labelledby="modal-title" hidden>
+      <div class="modal-backdrop" data-close></div>
+      <article class="modal-window">
+        <button class="modal-close" type="button" data-close aria-label="Close">[ X ]</button>
+        <div class="modal-glow" aria-hidden="true"></div>
+        <header class="modal-head">
+          <span class="modal-id" id="modal-id">[000]</span>
+          <h3 id="modal-title">PROJECT TITLE</h3>
+        </header>
+        <div class="modal-meta">
+          <span id="modal-year">YEAR</span>
+          <span id="modal-role">ROLE</span>
+        </div>
+        <div class="modal-tags" id="modal-tags"></div>
+        <p class="modal-desc" id="modal-desc"></p>
+        <div class="modal-actions">
+          <a href="#" class="btn" id="modal-link" target="_blank" rel="noopener noreferrer">VIEW_PROJECT →</a>
+        </div>
+      </article>
+    </div>
+
+    <script type="module" src="/src/main.js"></script>
+  </body>
+</html>
