@@ -12,7 +12,11 @@ projects.forEach((p) => {
   tile.type = 'button';
   tile.className = 'tile';
   tile.setAttribute('aria-haspopup', 'dialog');
+  const cover = p.cover
+    ? `<img class="tile-cover" src="${p.cover}" alt="" loading="lazy" decoding="async" />`
+    : '';
   tile.innerHTML = `
+    ${cover}
     <span class="tile-id">[${p.id}]</span>
     <span class="tile-arrow" aria-hidden="true">↗</span>
     <div class="tile-sweep" aria-hidden="true"></div>
