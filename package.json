@@ -5,8 +5,8 @@
   "type": "module",
   "description": "Portfolio pessoal - rfdinstrucional",
   "scripts": {
-    "dev": "vite",
-    "build": "vite build && node scripts/obfuscate.mjs",
+    "dev": "node scripts/build-content.mjs && vite",
+    "build": "node scripts/build-content.mjs && vite build && node scripts/obfuscate.mjs",
     "preview": "vite preview"
   },
   "devDependencies": {

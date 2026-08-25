@@ -93,6 +93,66 @@ if (langToggle) {
 
 applyTranslations();
 
+/* ---------- markdown renderer ---------- */
+function renderMarkdown(md) {
+  const lines = md.split('\n');
+  const html = [];
+  let inList = false;
+
+  for (const line of lines) {
+    const trimmed = line.trim();
+
+    if (trimmed === '') {
+      if (inList) { html.push('</ul>'); inList = false; }
+      continue;
+    }
+
+    const h2 = trimmed.match(/^## (.+)$/);
+    if (h2) {
+      if (inList) { html.push('</ul>'); inList = false; }
+      html.push(`<h4 class="modal-section-title">${h2[1]}</h4>`);
+      continue;
+    }
+
+    const h3 = trimmed.match(/^### (.+)$/);
+    if (h3) {
+      if (inList) { html.push('</ul>'); inList = false; }
+      html.push(`<h5 class="modal-section-sub">${h3[1]}</h5>`);
+      continue;
+    }
+
+    const img = trimmed.match(/^!\[([^\]]*)\]\(([^)]+)\)$/);
+    if (img) {
+      if (inList) { html.push('</ul>'); inList = false; }
+      html.push(`<figure class="modal-figure"><img src="${img[2]}" alt="${img[1]}" loading="lazy" decoding="async" /></figure>`);
+      continue;
+    }
+
+    const list = trimmed.match(/^- (.+)$/);
+    if (list) {
+      if (!inList) { html.push('<ul class="modal-list">'); inList = true; }
+      html.push(`<li>${list[1]}</li>`);
+      continue;
+    }
+
+    if (inList) { html.push('</ul>'); inList = false; }
+
+    const p = trimmed
+      .replace(/\*\*(.+?)\*\*/g, '<strong>$1</strong>')
+      .replace(/`(.+?)`/g, '<code>$1</code>');
+    html.push(`<p>${p}</p>`);
+  }
+
+  if (inList) html.push('</ul>');
+  return html.join('\n');
+}
+
+function getYouTubeId(url) {
+  if (!url) return null;
+  const match = url.match(/(?:youtu\.be\/|youtube\.com\/(?:watch\?v=|embed\/))([\w-]+)/);
+  return match ? match[1] : null;
+}
+
 /* ---------- gallery ---------- */
 const gallery = document.getElementById('gallery');
 
@@ -123,7 +183,10 @@ const elTitle = document.getElementById('modal-title');
 const elYear = document.getElementById('modal-year');
 const elRole = document.getElementById('modal-role');
 const elTags = document.getElementById('modal-tags');
+const elGallery = document.getElementById('modal-gallery');
+const elVideo = document.getElementById('modal-video');
 const elDesc = document.getElementById('modal-desc');
+const elActions = document.getElementById('modal-actions');
 const elLink = document.getElementById('modal-link');
 let lastFocus = null;
 
@@ -134,14 +197,34 @@ function openModal(p) {
   elTitle.textContent = p.title;
   elYear.textContent = `${t['modal.year']} ${p.year}`;
   elRole.textContent = `${t['modal.role']} ${p.role}`;
-  elDesc.textContent = p.desc;
-  elLink.href = p.link;
+
   elTags.innerHTML = '';
   p.tags.forEach((tag) => {
     const li = document.createElement('li');
     li.textContent = tag;
     elTags.appendChild(li);
   });
+
+  elDesc.innerHTML = renderMarkdown(p.desc);
+
+  elGallery.innerHTML = '';
+  elDesc.querySelectorAll('.modal-figure').forEach((fig) => {
+    elGallery.appendChild(fig);
+  });
+
+  elVideo.innerHTML = '';
+  const ytId = getYouTubeId(p.video);
+  if (ytId) {
+    elVideo.innerHTML = `<div class="modal-video-wrap"><iframe src="https://www.youtube.com/embed/${ytId}" title="Video" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen loading="lazy"></iframe></div>`;
+  }
+
+  if (p.link && p.link !== '#') {
+    elLink.href = p.link;
+    elActions.hidden = false;
+  } else {
+    elActions.hidden = true;
+  }
+
   modal.hidden = false;
   document.body.classList.add('modal-open');
   modal.querySelector('.modal-close').focus();
