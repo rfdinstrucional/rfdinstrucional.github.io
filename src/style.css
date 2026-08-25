@@ -68,7 +68,7 @@ main, footer.site-footer {
   padding: 0 clamp(1rem, 4vw, 3rem);
   height: 56px;
   border-bottom: 1px solid var(--line);
-  background: linear-gradient(180deg, rgba(0, 0, 0, 0.85), rgba(0, 0, 0, 0.35));
+  background: linear-gradient(180deg, rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.2));
   backdrop-filter: blur(6px);
   -webkit-backdrop-filter: blur(6px);
 }
@@ -356,7 +356,7 @@ main {
   transform: scale(1.05);
 }
 
-.tile-id { position: relative; z-index: 1; font-size: 10px; color: var(--faint); letter-spacing: 0.14em; transition: color 0.25s; }
+.tile-id { position: relative; z-index: 1; font-size: 11px; color: var(--faint); letter-spacing: 0.14em; transition: color 0.25s; }
 
 .tile-arrow {
   position: absolute;
@@ -379,12 +379,12 @@ main {
 }
 
 .tile-title {
-  font-size: 14px;
+  font-size: 18px;
   font-weight: 300;
   letter-spacing: 0.12em;
 }
 
-.tile-year { font-size: 10px; color: var(--dim); letter-spacing: 0.14em; }
+.tile-year { font-size: 12px; color: var(--dim); letter-spacing: 0.14em; }
 
 .tile:hover .tile-sweep,
 .tile:focus-visible .tile-sweep { opacity: 1; }
@@ -464,9 +464,9 @@ main {
   width: 100%;
   padding: 1.25rem clamp(1rem, 4vw, 3rem) 2rem;
   border-top: 1px solid var(--line);
-  background: var(--glass-surface);
-  backdrop-filter: var(--blur-glass);
-  -webkit-backdrop-filter: var(--blur-glass);
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.02), rgba(255, 255, 255, 0)), rgba(0, 0, 0, 0.25);
+  backdrop-filter: blur(6px);
+  -webkit-backdrop-filter: blur(6px);
   font-size: 11px;
   letter-spacing: 0.16em;
   color: rgba(255, 255, 255, 0.7);

@@ -93,6 +93,30 @@ if (langToggle) {
 
 applyTranslations();
 
+/* ---------- security ---------- */
+function escapeHtml(str) {
+  return String(str)
+    .replace(/&/g, '&amp;')
+    .replace(/</g, '&lt;')
+    .replace(/>/g, '&gt;')
+    .replace(/"/g, '&quot;')
+    .replace(/'/g, '&#39;');
+}
+
+function safeUrl(url) {
+  if (!url) return '#';
+  const trimmed = url.trim();
+  if (/^https?:\/\//i.test(trimmed)) return trimmed;
+  if (trimmed.startsWith('#')) return trimmed;
+  return '#';
+}
+
+function safeYouTubeId(url) {
+  if (!url) return null;
+  const match = url.match(/^https?:\/\/(?:www\.)?(?:youtu\.be\/|youtube\.com\/(?:watch\?v=|embed\/))([\w-]{11})/);
+  return match ? match[1] : null;
+}
+
 /* ---------- markdown renderer ---------- */
 function renderMarkdown(md) {
   const lines = md.split('\n');
@@ -110,34 +134,35 @@ function renderMarkdown(md) {
     const h2 = trimmed.match(/^## (.+)$/);
     if (h2) {
       if (inList) { html.push('</ul>'); inList = false; }
-      html.push(`<h4 class="modal-section-title">${h2[1]}</h4>`);
+      html.push(`<h4 class="modal-section-title">${escapeHtml(h2[1])}</h4>`);
       continue;
     }
 
     const h3 = trimmed.match(/^### (.+)$/);
     if (h3) {
       if (inList) { html.push('</ul>'); inList = false; }
-      html.push(`<h5 class="modal-section-sub">${h3[1]}</h5>`);
+      html.push(`<h5 class="modal-section-sub">${escapeHtml(h3[1])}</h5>`);
       continue;
     }
 
     const img = trimmed.match(/^!\[([^\]]*)\]\(([^)]+)\)$/);
     if (img) {
       if (inList) { html.push('</ul>'); inList = false; }
-      html.push(`<figure class="modal-figure"><img src="${img[2]}" alt="${img[1]}" loading="lazy" decoding="async" /></figure>`);
+      html.push(`<figure class="modal-figure"><img src="${escapeHtml(safeUrl(img[2]))}" alt="${escapeHtml(img[1])}" loading="lazy" decoding="async" /></figure>`);
       continue;
     }
 
     const list = trimmed.match(/^- (.+)$/);
     if (list) {
       if (!inList) { html.push('<ul class="modal-list">'); inList = true; }
-      html.push(`<li>${list[1]}</li>`);
+      html.push(`<li>${escapeHtml(list[1])}</li>`);
       continue;
     }
 
     if (inList) { html.push('</ul>'); inList = false; }
 
-    const p = trimmed
+    const escaped = escapeHtml(trimmed);
+    const p = escaped
       .replace(/\*\*(.+?)\*\*/g, '<strong>$1</strong>')
       .replace(/`(.+?)`/g, '<code>$1</code>');
     html.push(`<p>${p}</p>`);
@@ -145,12 +170,6 @@ function renderMarkdown(md) {
 
   if (inList) html.push('</ul>');
   return html.join('\n');
-}
-
-function getYouTubeId(url) {
-  if (!url) return null;
-  const match = url.match(/(?:youtu\.be\/|youtube\.com\/(?:watch\?v=|embed\/))([\w-]+)/);
-  return match ? match[1] : null;
 }
 
 /* ---------- gallery ---------- */
@@ -162,15 +181,15 @@ projects.forEach((p) => {
   tile.className = 'tile';
   tile.setAttribute('aria-haspopup', 'dialog');
   const cover = p.cover
-    ? `<img class="tile-cover" src="${p.cover}" alt="" loading="lazy" decoding="async" />`
+    ? `<img class="tile-cover" src="${escapeHtml(safeUrl(p.cover))}" alt="" loading="lazy" decoding="async" />`
     : '';
   tile.innerHTML = `
     ${cover}
-    <span class="tile-id">[${p.id}]</span>
+    <span class="tile-id">[${escapeHtml(p.id)}]</span>
     <span class="tile-arrow" aria-hidden="true">↗</span>
     <div class="tile-sweep" aria-hidden="true"></div>
-    <span class="tile-title">${p.title}</span>
-    <span class="tile-year">${p.year}</span>
+    <span class="tile-title">${escapeHtml(p.title)}</span>
+    <span class="tile-year">${escapeHtml(p.year)}</span>
   `;
   tile.addEventListener('click', () => openModal(p));
   gallery.appendChild(tile);
@@ -213,12 +232,12 @@ function openModal(p) {
   });
 
   elVideo.innerHTML = '';
-  const ytId = getYouTubeId(p.video);
+  const ytId = safeYouTubeId(p.video);
   if (ytId) {
     elVideo.innerHTML = `<div class="modal-video-wrap"><iframe src="https://www.youtube.com/embed/${ytId}" title="Video" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen loading="lazy"></iframe></div>`;
   }
 
-  if (p.link && p.link !== '#') {
+  if (p.link && p.link !== '#' && /^https?:\/\//i.test(p.link)) {
     elLink.href = p.link;
     elActions.hidden = false;
   } else {
