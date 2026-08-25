@@ -93,9 +93,9 @@ main, footer.site-footer {
   padding: 0 clamp(1rem, 4vw, 3rem);
   height: 56px;
   border-bottom: 1px solid var(--line);
-  background: linear-gradient(180deg, rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.2));
-  backdrop-filter: blur(6px);
-  -webkit-backdrop-filter: blur(6px);
+  background: linear-gradient(180deg, rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.08));
+  backdrop-filter: blur(2px);
+  -webkit-backdrop-filter: blur(2px);
 }
 
 .nav { display: flex; gap: clamp(0.75rem, 2.5vw, 2rem); }
@@ -212,6 +212,10 @@ main {
   overflow: hidden;
 }
 
+.about-photo {
+  perspective: 800px;
+}
+
 .about-photo img {
   display: block;
   width: 100%;
@@ -219,7 +223,9 @@ main {
   object-fit: cover;
   filter: grayscale(1) contrast(1.05);
   opacity: 0.85;
-  transition: filter 0.5s ease, opacity 0.5s ease;
+  transition: filter 0.5s ease, opacity 0.5s ease, transform 0.15s ease-out;
+  transform-style: preserve-3d;
+  will-change: transform;
 }
 
 .about-photo:hover img {
@@ -489,9 +495,9 @@ main {
   width: 100%;
   padding: 1.25rem clamp(1rem, 4vw, 3rem) 2rem;
   border-top: 1px solid var(--line);
-  background: linear-gradient(180deg, rgba(255, 255, 255, 0.02), rgba(255, 255, 255, 0)), rgba(0, 0, 0, 0.25);
-  backdrop-filter: blur(6px);
-  -webkit-backdrop-filter: blur(6px);
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.01), rgba(255, 255, 255, 0)), rgba(0, 0, 0, 0.12);
+  backdrop-filter: blur(2px);
+  -webkit-backdrop-filter: blur(2px);
   font-size: 11px;
   letter-spacing: 0.16em;
   color: rgba(255, 255, 255, 0.7);

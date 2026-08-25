@@ -108,6 +108,7 @@ function safeUrl(url) {
   const trimmed = url.trim();
   if (/^https?:\/\//i.test(trimmed)) return trimmed;
   if (trimmed.startsWith('#')) return trimmed;
+  if (trimmed.startsWith('/')) return trimmed;
   return '#';
 }
 
@@ -271,6 +272,26 @@ navLinks.forEach((a) => {
     navLinks.forEach((link) => link.classList.toggle('active', link === a));
   });
 });
+
+/* ---------- about photo 3d tilt ---------- */
+const aboutPhoto = document.querySelector('.about-photo');
+if (aboutPhoto) {
+  const img = aboutPhoto.querySelector('img');
+  const MAX_TILT = 8;
+
+  aboutPhoto.addEventListener('mousemove', (e) => {
+    const rect = aboutPhoto.getBoundingClientRect();
+    const x = (e.clientX - rect.left) / rect.width;
+    const y = (e.clientY - rect.top) / rect.height;
+    const rotateY = (x - 0.5) * MAX_TILT * 2;
+    const rotateX = (0.5 - y) * MAX_TILT * 2;
+    img.style.transform = `perspective(800px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) scale(1.05)`;
+  });
+
+  aboutPhoto.addEventListener('mouseleave', () => {
+    img.style.transform = '';
+  });
+}
 
 /* ---------- misc ---------- */
 document.getElementById('year').textContent = new Date().getFullYear();
