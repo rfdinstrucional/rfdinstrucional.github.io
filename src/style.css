@@ -116,6 +116,25 @@ main, footer.site-footer {
   background: var(--fg);
 }
 
+.lang-toggle {
+  appearance: none;
+  background: transparent;
+  border: 1px solid var(--line);
+  color: var(--dim);
+  font-family: inherit;
+  font-size: 10px;
+  letter-spacing: 0.14em;
+  padding: 4px 8px;
+  cursor: pointer;
+  transition: color var(--t-fast) ease, border-color var(--t-fast) ease;
+}
+
+.lang-toggle:hover,
+.lang-toggle:focus-visible {
+  color: var(--fg);
+  border-color: var(--line-strong);
+}
+
 /* ---------- layout ---------- */
 main {
   max-width: 1240px;
@@ -262,14 +281,18 @@ main {
 }
 
 .status {
-  display: flex;
+  display: inline-flex;
   align-items: center;
   gap: 8px;
   margin-top: 1.5rem;
   font-size: 10px;
   letter-spacing: 0.2em;
   color: var(--dim);
+  text-decoration: none;
+  transition: color var(--t-fast) ease;
 }
+
+.status:hover { color: var(--fg); }
 
 .status-dot {
   width: 6px;
@@ -393,7 +416,7 @@ main {
 
 .contact-links {
   display: grid;
-  grid-template-columns: repeat(4, 1fr);
+  grid-template-columns: repeat(3, 1fr);
   border-top: 1px solid var(--line);
   border-left: 1px solid var(--line);
 }
