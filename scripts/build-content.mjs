@@ -53,7 +53,7 @@ const projects = files.map(file => {
     year: meta.year || '2024',
     role: meta.role || 'DEVELOPER',
     tags: meta.tags || [],
-    cover: meta.cover ? meta.cover.replace(/^\.\.\/assets\//, '/content-assets/') : null,
+    cover: meta.cover ? meta.cover.replace(/^\.\/assets\//, '/content-assets/') : null,
     link: meta.link || '#',
     video: meta.video || null,
     desc: body.replace(/\(\.\/assets\//g, '(/content-assets/'),
