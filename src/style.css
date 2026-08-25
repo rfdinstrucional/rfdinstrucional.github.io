@@ -39,6 +39,31 @@ body {
 
 body.modal-open { overflow: hidden; }
 
+/* ---------- scrollbar ---------- */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #fff;
+  border: none;
+  border-radius: 0;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(255, 255, 255, 0.8);
+}
+
+* {
+  scrollbar-width: thin;
+  scrollbar-color: #fff transparent;
+}
+
 ::selection { background: #fff; color: #000; }
 
 /* ---------- shader canvas ---------- */
