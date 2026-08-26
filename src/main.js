@@ -190,7 +190,7 @@ projects.forEach((p) => {
     <div class="tile-sweep" aria-hidden="true"></div>
     <div class="tile-bottom">
       <span class="tile-title">${escapeHtml(p.title)}</span>
-      <span class="tile-cta" aria-label="Ver projeto">👁</span>
+      <span class="tile-cta" aria-label="View project">View →</span>
     </div>
   `;
   tile.addEventListener('click', () => openModal(p));
@@ -236,11 +236,6 @@ function openModal(p) {
   elRole.textContent = `${t['modal.role']} ${p.role}`;
 
   elTags.innerHTML = '';
-  p.tags.forEach((tag) => {
-    const li = document.createElement('li');
-    li.textContent = tag;
-    elTags.appendChild(li);
-  });
 
   elLang.textContent = modalLang === 'pt' ? 'EN' : 'PT';
 
