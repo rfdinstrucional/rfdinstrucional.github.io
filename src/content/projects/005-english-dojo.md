@@ -1,6 +1,6 @@
 ---
 id: "005"
-title: ENGLISH DOJO
+title: English Dojo Simulator
 year: "2025"
 role: LEAD DI + DEV
 tags:

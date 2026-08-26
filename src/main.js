@@ -188,9 +188,13 @@ projects.forEach((p) => {
     ${cover}
     <span class="tile-id">[${escapeHtml(p.id)}]</span>
     <div class="tile-sweep" aria-hidden="true"></div>
-    <span class="tile-title">${escapeHtml(p.title)}</span>
-    <span class="tile-year">${escapeHtml(p.year)}</span>
-    <span class="tile-cta" aria-hidden="true">VER_PROJETO_COMPLETO →</span>
+    <div class="tile-bottom">
+      <div class="tile-info">
+        <span class="tile-title">${escapeHtml(p.title)}</span>
+        <span class="tile-year">${escapeHtml(p.year)}</span>
+      </div>
+      <span class="tile-cta">VER_PROJETO_COMPLETO →</span>
+    </div>
   `;
   tile.addEventListener('click', () => openModal(p));
   gallery.appendChild(tile);

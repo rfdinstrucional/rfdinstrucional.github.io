@@ -1,6 +1,6 @@
 ---
 id: "008"
-title: BLENDER COMPLETE
+title: Blender Skill up!
 year: "2023"
 role: DESIGNER INSTRUCIONAL
 tags:

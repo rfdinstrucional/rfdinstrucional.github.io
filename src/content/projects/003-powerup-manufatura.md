@@ -1,6 +1,6 @@
 ---
 id: "003"
-title: POWERUP! MANUFATURA
+title: PowerUp! Assembly
 year: "2025"
 role: LEAD DI + DEV
 tags:

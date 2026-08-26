@@ -1,6 +1,6 @@
 ---
 id: "004"
-title: MATH HEROES
+title: Math Heroes Academy
 year: "2025"
 role: LEAD DI + CREATIVE DEV
 tags:

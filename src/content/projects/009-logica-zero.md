@@ -1,6 +1,6 @@
 ---
 id: "009"
-title: LÓGICA ZERO
+title: Web Skill up!
 year: "2023"
 role: DESIGNER INSTRUCIONAL
 tags:

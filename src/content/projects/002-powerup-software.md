@@ -1,6 +1,6 @@
 ---
 id: "002"
-title: POWERUP! SOFTWARE
+title: PowerUp! Connections
 year: "2025"
 role: LEAD DI + DEV
 tags:

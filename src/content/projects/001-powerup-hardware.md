@@ -1,6 +1,6 @@
 ---
 id: "001"
-title: POWERUP! HARDWARE
+title: PowerUp! Circuits
 year: "2025"
 role: LEAD DI + DEV
 tags:

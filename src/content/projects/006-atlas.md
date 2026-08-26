@@ -1,6 +1,6 @@
 ---
 id: "006"
-title: ATLAS
+title: World Tour Guide
 year: "2024"
 role: DESIGNER INSTRUCIONAL + DEV
 tags:
