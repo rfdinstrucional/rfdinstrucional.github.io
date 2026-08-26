@@ -12,8 +12,8 @@ const translations = {
     'nav.contact': 'CONTATO',
     'lang.aria': 'Mudar para inglês',
     'about.title': 'SOBRE',
-    'about.role': '// DESIGNER INSTRUCIONAL',
-    'about.desc': 'Sou um profissional com mais de 12 anos de experiência no terceiro setor e 8 anos dedicados ao design e à gestão educacional. Meu trabalho combina metodologias pedagógicas consolidadas (ADDIE, Taxonomia de Bloom) com soluções tecnológicas inovadoras para criar trilhas de aprendizagem imersivas e interativas focadas na retenção de conhecimento para jovens e adultos.',
+    'about.role': '// DESIGNER INSTRUCIONAL TÉCNICO',
+    'about.desc': 'Designer Instrucional técnico com 9 anos transformando conhecimento em experiências educacionais imersivas e 12 anos no terceiro setor. Especialista em arquitetura de aprendizagem (ADDIE, SAM, Taxonomia de Bloom) e desenvolvimento web full-stack. Domina o ciclo completo: da análise instrucional à implementação em plataformas LMS (Moodle, Articulate Storyline/Rise), passando por prototipagem interativa, gamificação, automação com IA generativa e experiências em Realidade Virtual (Meta Quest, WebXR, ShapesXR, Gravity Sketch). Fluente em HTML/CSS/JS, React, Next.js, Node.js, Three.js e WebGL — sempre conectado às tecnologias que definem o futuro do aprendizado digital.',
     'about.edu.title': '// FORMAÇÃO & ESPECIALIZAÇÕES',
     'about.edu.1.degree': 'PÓS-GRADUAÇÃO // DESIGN INSTRUCIONAL',
     'about.edu.2.degree': 'PÓS-GRADUAÇÃO // INOVAÇÃO WEB',
@@ -36,8 +36,8 @@ const translations = {
     'nav.contact': 'CONTACT',
     'lang.aria': 'Switch to Portuguese',
     'about.title': 'ABOUT',
-    'about.role': '// INSTRUCTIONAL DESIGNER',
-    'about.desc': 'I am a professional with over 12 years of experience in the nonprofit sector and 8 years dedicated to design and educational management. My work combines established pedagogical methodologies (ADDIE, Bloom\'s Taxonomy) with innovative technological solutions to create immersive, interactive learning paths focused on knowledge retention for young people and adults.',
+    'about.role': '// TECHNICAL INSTRUCTIONAL DESIGNER',
+    'about.desc': 'Technical Instructional Designer with 9 years transforming knowledge into immersive educational experiences and 12 years in the nonprofit sector. Expert in learning architecture (ADDIE, SAM, Bloom\'s Taxonomy) and full-stack web development. Mastering the complete cycle: from instructional analysis to LMS implementation (Moodle, Articulate Storyline/Rise), through interactive prototyping, gamification, generative AI automation, and Virtual Reality experiences (Meta Quest, WebXR, ShapesXR, Gravity Sketch). Fluent in HTML/CSS/JS, React, Next.js, Node.js, Three.js, and WebGL — always connected to the technologies shaping the future of digital learning.',
     'about.edu.title': '// EDUCATION & SPECIALIZATIONS',
     'about.edu.1.degree': 'POSTGRADUATE // INSTRUCTIONAL DESIGN',
     'about.edu.2.degree': 'POSTGRADUATE // WEB INNOVATIONS',
@@ -187,10 +187,10 @@ projects.forEach((p) => {
   tile.innerHTML = `
     ${cover}
     <span class="tile-id">[${escapeHtml(p.id)}]</span>
-    <span class="tile-arrow" aria-hidden="true">↗</span>
     <div class="tile-sweep" aria-hidden="true"></div>
     <span class="tile-title">${escapeHtml(p.title)}</span>
     <span class="tile-year">${escapeHtml(p.year)}</span>
+    <span class="tile-cta" aria-hidden="true">VER_PROJETO_COMPLETO →</span>
   `;
   tile.addEventListener('click', () => openModal(p));
   gallery.appendChild(tile);
