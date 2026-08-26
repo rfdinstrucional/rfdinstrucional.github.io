@@ -47,6 +47,16 @@ const projects = files.map(file => {
   const { meta, body } = parseFrontmatter(raw);
   const slug = basename(file, '.md');
 
+  const descEnMarker = 'desc_en:';
+  let descEn = null;
+  const bodyLines = body.split('\n');
+  const descEnIdx = bodyLines.findIndex(l => l.trim() === descEnMarker);
+  if (descEnIdx !== -1) {
+    descEn = bodyLines.slice(descEnIdx + 1).join('\n').trim();
+  }
+
+  const descPt = bodyLines.slice(0, descEnIdx === -1 ? bodyLines.length : descEnIdx).join('\n').trim();
+
   return {
     id: meta.id || slug,
     title: meta.title || slug.toUpperCase(),
@@ -56,7 +66,8 @@ const projects = files.map(file => {
     cover: meta.cover ? meta.cover.replace(/^\.\/assets\//, '/content-assets/') : null,
     link: meta.link || '#',
     video: meta.video || null,
-    desc: body.replace(/\(\.\/assets\//g, '(/content-assets/'),
+    desc: descPt.replace(/\(\.\/assets\//g, '(/content-assets/'),
+    desc_en: descEn ? descEn.replace(/\(\.\/assets\//g, '(/content-assets/') : null,
     slug
   };
 });

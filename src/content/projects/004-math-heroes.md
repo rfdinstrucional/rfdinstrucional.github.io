@@ -36,3 +36,30 @@ Construído em Three.js com React Three Fiber para o campus 3D acessível via na
 Protótipo funcional com 3 ambientes 3D e 45 desafios matemáticos gamificados. Em teste com 60 alunos do 7° ao 9° ano, o engajamento médio por sessão foi de 42 minutos. 91% dos alunos preferiram a experiência ao material tradicional.
 
 ![Screenshot do projeto](./assets/mathheroes.jpeg)
+
+desc_en:
+
+## About the Project
+
+Math Heroes is a wacky math school set in a 3D educational metaverse. Students create avatars, explore a virtual campus, and solve math challenges in interactive classrooms, number battle arenas, and cooperative missions. Math stops being abstract and becomes a lived experience.
+
+## Methodology
+
+The project applied Game-Based Learning with transmedia narrative elements. The campus was designed with spacing and environmental storytelling — each area of the metaverse is a math topic (Geometry, Algebra, Statistics). Assessment is embedded in gameplay: solving problems unlocks rewards and world progression.
+
+## Knowledge Areas
+
+- Spatial and plane geometry
+- Functional algebra and equations
+- Statistics and probability
+- Computational thinking applied to mathematics
+
+## Technical Solution
+
+Built in Three.js with React Three Fiber for the 3D campus accessible via browser, no installation required. Real-time chat with WebSockets. Customizable avatars with inventory system. Node.js backend manages synchronous multiplayer sessions and educational progress persistence.
+
+## Results
+
+Functional prototype with 3D environments and 45 gamified math challenges. Tested with 60 students from 7th to 9th grade, average engagement per session was 42 minutes. 91% of students preferred the experience over traditional material.
+
+![Project screenshot](./assets/mathheroes.jpeg)

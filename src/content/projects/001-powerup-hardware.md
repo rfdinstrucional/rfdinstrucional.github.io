@@ -36,3 +36,30 @@ Desenvolvido com Three.js e React Three Fiber para rendering 3D no navegador, co
 Em pilotagem com 120 alunos do ensino médio, a retenção de conceitos sobre circuitos aumentou significativamente comparado à aula expositiva. A taxa de conclusão das fases foi de 89%, com tempo médio de engajamento de 34 minutos por sessão.
 
 ![Screenshot do projeto](./assets/circuits.jpeg)
+
+desc_en:
+
+## About the Project
+
+PowerUp! Hardware is the first phase of the STEAM educational game, where students explore electrical circuits and basic electronics concepts. The character must restore power to a fictional city by solving challenges that translate resistance, voltage, current, and electronic components into tangible game mechanics.
+
+## Methodology
+
+The design followed the ADDIE model with a focus on Salvaged Learning. Each phase was mapped to learning objectives using the revised Bloom's Taxonomy: remember → understand → apply → analyze. Difficulty progression uses adaptive scaffolding — the system adjusts complexity based on the player's real-time performance.
+
+## Knowledge Areas
+
+- Electrical circuits (resistance, voltage, current)
+- Electronic components (resistors, capacitors, LEDs)
+- Reading electrical schematics
+- Basic soldering and assembly
+
+## Technical Solution
+
+Built with Three.js and React Three Fiber for in-browser 3D rendering, with top-down game mechanics. Students interact with virtual components on a simulated workbench. A Node.js backend tracks progress and learning metrics in real time.
+
+## Results
+
+In a pilot with 120 high school students, retention of circuit concepts increased significantly compared to traditional lectures. Phase completion rate was 89%, with an average engagement time of 34 minutes per session.
+
+![Project screenshot](./assets/circuits.jpeg)

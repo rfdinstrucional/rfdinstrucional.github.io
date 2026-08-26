@@ -1,5 +1,5 @@
 ---
-id: "008"
+id: "007"
 title: Blender Skill up!
 year: "2023"
 role: DESIGNER INSTRUCIONAL
@@ -37,3 +37,31 @@ Hospedado no Moodle com atividades diversificadas: fóruns de discussão, tarefa
 Curso completo com 12 módulos, 84 aulas em vídeo (48h de conteúdo), 36 atividades práticas e 12 projetos avaliativos. Taxa de conclusão de 67% — 3x acima da média de cursos online abertos. Nota média de satisfação: 4.7/5.0.
 
 ![Screenshot do projeto](./assets/cursoblender.jpeg)
+
+desc_en:
+
+## About the Project
+
+Blender Skill up! is a structured 3D modeling course with Blender hosted on Moodle. The course takes students from beginner to advanced, with progressive hands-on projects that result in a personal 3D portfolio at the end of each module.
+
+## Methodology
+
+Course designed based on objective-based instruction (Mager) with 30+ measurable learning objectives. Progression follows Bloom's Taxonomy: apply tools → analyze forms → create original models. Project-based assessment with clear rubrics and peer review among students.
+
+## Knowledge Areas
+
+- Blender interface and tools
+- Modeling, sculpting, and topology
+- Materials, textures, and UV mapping
+- Lighting, rendering, and compositing
+- Basic animation and rigging
+
+## Technical Solution
+
+Hosted on Moodle with diverse activities: discussion forums, file upload assignments (.blend files), quizzes with render images, and progression checkpoints. 4K screencast videos with narration. Interactive glossary of technical terms. Automatic certification upon completing all modules.
+
+## Results
+
+Complete course with 12 modules, 84 video lessons (48h of content), 36 practical activities, and 12 assessed projects. Completion rate of 67% — 3x above the average for open online courses. Average satisfaction score: 4.7/5.0.
+
+![Project screenshot](./assets/cursoblender.jpeg)

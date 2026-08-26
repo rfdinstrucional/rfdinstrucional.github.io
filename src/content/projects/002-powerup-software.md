@@ -37,3 +37,31 @@ Continua a engine de Three.js do Hardware, mas com interface de terminal interat
 Fase testada com 90 alunos que completaram o módulo Hardware. A evolução na capacidade de resolver problemas com lógica de programação foi substancial. 82% dos alunos relatam confiança para escrever código após a experiência.
 
 ![Screenshot do projeto](./assets/connections.jpeg)
+
+desc_en:
+
+## About the Project
+
+PowerUp! Software is the second phase of the STEAM game, dedicated to introducing programming logic. The character must hack terminals, write scripts, and solve logic puzzles to unlock doors and restore city systems. Each puzzle teaches real programming concepts within an engaging narrative.
+
+## Methodology
+
+The phase was designed using Computational Thinking and Parsons Problems — students first organize code blocks, then write their own code. Progression follows Bloom's: identify → understand → apply → create. Each puzzle is a mini-exercise in debugging and problem-solving.
+
+## Knowledge Areas
+
+- Variables, data types, and operators
+- Conditional structures (if/else)
+- Loops and repetition
+- Functions and modularization
+- Debugging and problem-solving
+
+## Technical Solution
+
+Continues the Three.js engine from Hardware, but with an interactive terminal interface overlaid on the 3D world. The code editor uses Monaco Editor (same as VS Code) with syntax highlighting and real-time validation. Solutions are tested against test cases before advancing.
+
+## Results
+
+Tested with 90 students who completed the Hardware module. Improvement in problem-solving with programming logic was substantial. 82% of students report confidence to write code after the experience.
+
+![Project screenshot](./assets/connections.jpeg)

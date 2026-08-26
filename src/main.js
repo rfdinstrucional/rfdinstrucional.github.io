@@ -189,11 +189,8 @@ projects.forEach((p) => {
     <span class="tile-id">[${escapeHtml(p.id)}]</span>
     <div class="tile-sweep" aria-hidden="true"></div>
     <div class="tile-bottom">
-      <div class="tile-info">
-        <span class="tile-title">${escapeHtml(p.title)}</span>
-        <span class="tile-year">${escapeHtml(p.year)}</span>
-      </div>
-      <span class="tile-cta">VER_PROJETO_COMPLETO →</span>
+      <span class="tile-title">${escapeHtml(p.title)}</span>
+      <span class="tile-cta" aria-label="Ver projeto">👁</span>
     </div>
   `;
   tile.addEventListener('click', () => openModal(p));
@@ -212,11 +209,27 @@ const elVideo = document.getElementById('modal-video');
 const elDesc = document.getElementById('modal-desc');
 const elActions = document.getElementById('modal-actions');
 const elLink = document.getElementById('modal-link');
+const elLang = document.getElementById('modal-lang');
 let lastFocus = null;
+let modalProject = null;
+let modalLang = 'pt';
+
+function renderModalDesc() {
+  if (!modalProject) return;
+  const md = modalLang === 'en' && modalProject.desc_en ? modalProject.desc_en : modalProject.desc;
+  elDesc.innerHTML = renderMarkdown(md);
+  elGallery.innerHTML = '';
+  elDesc.querySelectorAll('.modal-figure').forEach((fig) => {
+    elGallery.appendChild(fig);
+  });
+}
 
 function openModal(p) {
   const t = translations[currentLang];
   lastFocus = document.activeElement;
+  modalProject = p;
+  modalLang = currentLang;
+
   elId.textContent = `[${p.id}]`;
   elTitle.textContent = p.title;
   elYear.textContent = `${t['modal.year']} ${p.year}`;
@@ -229,12 +242,9 @@ function openModal(p) {
     elTags.appendChild(li);
   });
 
-  elDesc.innerHTML = renderMarkdown(p.desc);
+  elLang.textContent = modalLang === 'pt' ? 'EN' : 'PT';
 
-  elGallery.innerHTML = '';
-  elDesc.querySelectorAll('.modal-figure').forEach((fig) => {
-    elGallery.appendChild(fig);
-  });
+  renderModalDesc();
 
   elVideo.innerHTML = '';
   const ytId = safeYouTubeId(p.video);
@@ -254,8 +264,15 @@ function openModal(p) {
   modal.querySelector('.modal-close').focus();
 }
 
+elLang.addEventListener('click', () => {
+  modalLang = modalLang === 'pt' ? 'en' : 'pt';
+  elLang.textContent = modalLang === 'pt' ? 'EN' : 'PT';
+  renderModalDesc();
+});
+
 function closeModal() {
   modal.hidden = true;
+  modalProject = null;
   document.body.classList.remove('modal-open');
   if (lastFocus) lastFocus.focus();
 }

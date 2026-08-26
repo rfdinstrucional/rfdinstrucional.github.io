@@ -1,5 +1,5 @@
 ---
-id: "010"
+id: "009"
 title: Drawing Skill up!
 year: "2022"
 role: DESIGNER INSTRUCIONAL
@@ -37,3 +37,31 @@ Moodle com upload de imagens das atividades, fóruns de galeria para peer review
 Curso com 6 módulos, 48 aulas em vídeo (18h), 30 atividades práticas e 6 projetos avaliativos. Nota média de satisfação: 4.9/5.0. 88% dos concluintes relatam que o curso despertou interesse em continuar estudando arte.
 
 ![Screenshot do projeto](./assets/cursodesenho.jpeg)
+
+desc_en:
+
+## About the Project
+
+Drawing Skill up! is an introductory art drawing course on Moodle, aimed at young people and adults who have never had formal contact with the practice. The course covers fundamentals — shape, proportion, perspective, light and shadow — with practical exercises that can be done with pencil and common paper.
+
+## Methodology
+
+Project following the objective-based instruction model (Mager) with a focus on motor skills and visual perception. Each module integrates short theory with immediate practice — the student draws and sends a photo of the activity for instructor and peer feedback. Continuous formative assessment with visual rubrics.
+
+## Knowledge Areas
+
+- Geometric shapes and volume construction
+- Proportion and basic anatomy
+- 1, 2, and 3-point perspective
+- Light, shadow, and tonal value
+- Composition and framing
+
+## Technical Solution
+
+Moodle with image uploads for activities, gallery forums for peer review, high-quality video lessons with live technique demonstrations. Illustrated glossary of artistic terms. Portfolio certification: students compile all activities into a personal collection at the end of the course.
+
+## Results
+
+Course with 6 modules, 48 video lessons (18h), 30 practical activities, and 6 assessed projects. Average satisfaction score: 4.9/5.0. 88% of completers report that the course sparked interest in continuing to study art.
+
+![Project screenshot](./assets/cursodesenho.jpeg)
