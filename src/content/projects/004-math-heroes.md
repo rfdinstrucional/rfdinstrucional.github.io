@@ -7,7 +7,7 @@ tags:
   - METAVERSO
   - THREEJS
   - GAME
-cover: ./assets/cover-4.svg
+cover: ./assets/mathheroes.jpeg
 link: "#"
 video: null
 ---
@@ -35,4 +35,4 @@ Construído em Three.js com React Three Fiber para o campus 3D acessível via na
 
 Protótipo funcional com 3 ambientes 3D e 45 desafios matemáticos gamificados. Em teste com 60 alunos do 7° ao 9° ano, o engajamento médio por sessão foi de 42 minutos. 91% dos alunos preferiram a experiência ao material tradicional.
 
-![Screenshot do projeto](./assets/content-4.svg)
+![Screenshot do projeto](./assets/mathheroes.jpeg)

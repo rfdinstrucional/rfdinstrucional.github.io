@@ -7,7 +7,7 @@ tags:
   - GEOGRAFIA
   - THREEJS
   - EXPLORAÇÃO
-cover: ./assets/cover-6.svg
+cover: ./assets/worldtour.jpeg
 link: "#"
 video: null
 ---
@@ -35,4 +35,4 @@ Globo 3D renderizado em Three.js com texturas de satélite de alta resolução. 
 
 Protótipo funcional com 50 países mapeados e 6 camadas de informação por nação. Testado com 40 alunos do ensino fundamental II. A retenção de informações geográficas aumentou de forma significativa comparada ao uso de mapa plano. 96% dos alunos preferiram o globo 3D ao atlas impresso.
 
-![Screenshot do projeto](./assets/content-6.svg)
+![Screenshot do projeto](./assets/worldtour.jpeg)

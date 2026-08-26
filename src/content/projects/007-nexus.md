@@ -7,7 +7,7 @@ tags:
   - MICROLEARNING
   - MOBILE
   - OFFLINE
-cover: ./assets/cover-7.svg
+cover: null
 link: "#"
 video: null
 ---
@@ -35,4 +35,4 @@ Progressive Web App em React com service workers para cache completo dos módulo
 
 Implementado em 32 equipes de campo (128 técnicos). O tempo médio de resolução de problemas em campo reduziu de forma significativa. A dependência de chamadas ao suporte central caiu drasticamente. Disponível offline 100% do tempo, mesmo nas regiões mais remotas.
 
-![Screenshot do projeto](./assets/content-7.svg)
+![Screenshot do projeto](./assets/circuits.jpeg)

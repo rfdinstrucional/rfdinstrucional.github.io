@@ -7,7 +7,7 @@ tags:
   - IA GENERATIVA
   - REACT
   - CONVERSACIONAL
-cover: ./assets/cover-5.svg
+cover: ./assets/englishdojo.jpeg
 link: "#"
 video: null
 ---
@@ -35,4 +35,4 @@ Frontend em React e Next.js com interface conversacional fluida. O agente de IA 
 
 Piloto com 85 estudantes de inglês intermediário. Após 4 semanas de uso (3 sessões/semana), a melhoria média no speaking foi significativa. 78% dos usuários relataram maior confiança em situações reais de conversação em inglês.
 
-![Screenshot do projeto](./assets/content-5.svg)
+![Screenshot do projeto](./assets/englishdojo.jpeg)

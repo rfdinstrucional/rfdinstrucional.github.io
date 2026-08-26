@@ -7,7 +7,7 @@ tags:
   - GAMIFICAÇÃO
   - THREEJS
   - CÓDIGO
-cover: ./assets/cover-2.svg
+cover: ./assets/connections.jpeg
 link: "#"
 video: null
 ---
@@ -36,4 +36,4 @@ Continua a engine de Three.js do Hardware, mas com interface de terminal interat
 
 Fase testada com 90 alunos que completaram o módulo Hardware. A evolução na capacidade de resolver problemas com lógica de programação foi substancial. 82% dos alunos relatam confiança para escrever código após a experiência.
 
-![Screenshot do projeto](./assets/content-2.svg)
+![Screenshot do projeto](./assets/connections.jpeg)

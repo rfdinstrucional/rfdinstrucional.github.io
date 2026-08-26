@@ -7,7 +7,7 @@ tags:
   - MOODLE
   - 3D
   - CURSO
-cover: ./assets/cover-8.svg
+cover: ./assets/cursoblender.jpeg
 link: "#"
 video: null
 ---
@@ -36,4 +36,4 @@ Hospedado no Moodle com atividades diversificadas: fóruns de discussão, tarefa
 
 Curso completo com 12 módulos, 84 aulas em vídeo (48h de conteúdo), 36 atividades práticas e 12 projetos avaliativos. Taxa de conclusão de 67% — 3x acima da média de cursos online abertos. Nota média de satisfação: 4.7/5.0.
 
-![Screenshot do projeto](./assets/content-8.svg)
+![Screenshot do projeto](./assets/cursoblender.jpeg)
