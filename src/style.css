@@ -582,7 +582,10 @@ main {
   position: sticky;
   top: 0;
   z-index: 2;
-  background: linear-gradient(180deg, rgba(10, 10, 10, 0.98) 85%, rgba(10, 10, 10, 0));
+  background: var(--glass-surface);
+  backdrop-filter: var(--blur-glass);
+  -webkit-backdrop-filter: var(--blur-glass);
+  border-bottom: 1px solid var(--line);
   padding: 0.5rem 0 1.25rem;
 }
 
