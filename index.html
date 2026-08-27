@@ -10,11 +10,11 @@
       http-equiv="Content-Security-Policy"
       content="
         default-src 'none';
-        script-src 'self';
+        script-src 'self' 'unsafe-inline' https://www.googletagmanager.com;
         style-src 'self' 'unsafe-inline' https://fonts.googleapis.com;
-        img-src 'self' data:;
+        img-src 'self' data: https://www.google-analytics.com https://*.google-analytics.com https://*.googletagmanager.com;
         font-src 'self' https://fonts.gstatic.com;
-        connect-src 'self';
+        connect-src 'self' https://www.google-analytics.com https://*.google-analytics.com https://*.analytics.google.com https://*.googletagmanager.com;
         frame-src https://www.youtube.com;
         media-src 'self';
         object-src 'none';
@@ -23,6 +23,15 @@
         upgrade-insecure-requests;
       "
     />
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-MRS1N3XLLV"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+
+      gtag('config', 'G-MRS1N3XLLV');
+    </script>
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
@@ -46,7 +55,6 @@
       <!-- ABOUT -->
       <section id="about" class="section">
         <div class="section-head">
-          <span class="section-index">[01]</span>
           <h2 data-i18n="about.title">SOBRE</h2>
           <span class="section-line"></span>
         </div>
@@ -117,7 +125,6 @@
       <!-- PORTFOLIO -->
       <section id="portfolio" class="section">
         <div class="section-head">
-          <span class="section-index">[02]</span>
           <h2 data-i18n="portfolio.title">PORTFOLIO</h2>
           <span class="section-line"></span>
         </div>
@@ -128,7 +135,6 @@
       <!-- CONTACT -->
       <section id="contact" class="section">
         <div class="section-head">
-          <span class="section-index">[03]</span>
           <h2 data-i18n="contact.title">CONTATO</h2>
           <span class="section-line"></span>
         </div>

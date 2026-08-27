@@ -1,8 +1,8 @@
 :root {
   --bg: #000000;
   --fg: #ffffff;
-  --dim: rgba(255, 255, 255, 0.55);
-  --faint: rgba(255, 255, 255, 0.28);
+  --dim: #8ddca4;
+  --faint: #8ddca4;
   --line: rgba(255, 255, 255, 0.22);
   --line-strong: rgba(255, 255, 255, 0.6);
   --grad: linear-gradient(90deg, rgba(255, 255, 255, 0) 0%, rgba(255, 255, 255, 0.14) 50%, rgba(255, 255, 255, 0) 100%);
@@ -156,8 +156,7 @@ main, footer.site-footer {
 .lang-toggle img {
   width: 20px;
   height: 12px;
-  filter: grayscale(1);
-  transition: filter var(--t-fast) ease;
+  transition: opacity var(--t-fast) ease;
 }
 
 .lang-toggle:hover,
@@ -167,7 +166,7 @@ main, footer.site-footer {
 
 .lang-toggle:hover img,
 .lang-toggle:focus-visible img {
-  filter: none;
+  opacity: 0.8;
 }
 
 /* ---------- layout ---------- */
@@ -181,17 +180,17 @@ main {
 
 .section-head {
   display: flex;
-  align-items: baseline;
-  gap: 0.75rem;
+  align-items: center;
+  gap: 1rem;
   margin-bottom: 1.5rem;
 }
 
 .section-index { font-size: 11px; color: var(--faint); }
 
 .section-head h2 {
-  font-size: 13px;
+  font-size: clamp(1.25rem, 2.5vw, 1.6rem);
   font-weight: 400;
-  letter-spacing: 0.3em;
+  letter-spacing: 0.2em;
 }
 
 .section-line {
@@ -261,7 +260,7 @@ main {
 
 .about-text {
   margin-top: 1.25rem;
-  color: rgba(255, 255, 255, 0.78);
+  color: var(--dim);
   font-size: 14px;
 }
 
@@ -318,7 +317,7 @@ main {
 .tools li + li::before {
   content: "|";
   margin-inline: 0.55rem;
-  color: var(--line-strong);
+  color: rgba(141, 220, 164, 0.4);
 }
 
 .status {
@@ -386,14 +385,14 @@ main {
   width: 100%;
   height: 100%;
   object-fit: cover;
-  filter: grayscale(1) brightness(0.65);
+  filter: brightness(0.9);
   transform: scale(1.001);
   transition: filter 0.4s ease, transform 0.5s var(--t-ease);
 }
 
 .tile:hover .tile-cover,
 .tile:focus-visible .tile-cover {
-  filter: grayscale(0) brightness(1);
+  filter: brightness(1.05);
   transform: scale(1.05);
 }
 
@@ -536,7 +535,7 @@ main {
   -webkit-backdrop-filter: blur(2px);
   font-size: 11px;
   letter-spacing: 0.16em;
-  color: rgba(255, 255, 255, 0.7);
+  color: var(--dim);
 }
 
 /* ---------- modal ---------- */
@@ -621,8 +620,7 @@ main {
 .modal-lang img {
   width: 20px;
   height: 12px;
-  filter: grayscale(1);
-  transition: filter 0.2s ease;
+  transition: opacity 0.2s ease;
 }
 
 .modal-lang:hover {
@@ -630,7 +628,7 @@ main {
 }
 
 .modal-lang:hover img {
-  filter: none;
+  opacity: 0.8;
 }
 
 .modal-head { display: flex; align-items: center; gap: 0.75rem; }
@@ -699,7 +697,7 @@ main {
   margin-top: 1.25rem;
   font-size: 14px;
   line-height: 1.7;
-  color: rgba(255, 255, 255, 0.78);
+  color: var(--dim);
 }
 
 .modal-desc p { margin-top: 0.85rem; }
@@ -735,7 +733,7 @@ main {
   padding-left: 1rem;
   margin-top: 0.3rem;
   font-size: 13px;
-  color: rgba(255, 255, 255, 0.68);
+  color: var(--dim);
 }
 
 .modal-list li::before {
