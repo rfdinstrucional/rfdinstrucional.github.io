@@ -583,13 +583,13 @@ main {
   top: 0;
   z-index: 2;
   background: linear-gradient(180deg, rgba(10, 10, 10, 0.98) 85%, rgba(10, 10, 10, 0));
-  padding-bottom: 0.75rem;
+  padding: 0.5rem 0 1.25rem;
 }
 
 .modal-close {
   position: absolute;
-  top: 10px;
-  right: 10px;
+  top: 0.5rem;
+  right: 0;
   appearance: none;
   background: transparent;
   border: 1px solid var(--line);
