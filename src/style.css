@@ -559,7 +559,7 @@ main {
   overflow-y: auto;
   border: 1px solid var(--line-strong);
   background: linear-gradient(180deg, rgba(10, 10, 10, 0.98), rgba(0, 0, 0, 0.98));
-  padding: clamp(1.25rem, 3vw, 2.75rem);
+  padding: 0 clamp(1.25rem, 3vw, 2.75rem) clamp(1.25rem, 3vw, 2.75rem);
   animation: modal-in 0.25s var(--t-ease);
 }
 
@@ -582,10 +582,8 @@ main {
   position: sticky;
   top: 0;
   z-index: 2;
-  background: linear-gradient(180deg, rgba(10, 10, 10, 0.98) 80%, rgba(10, 10, 10, 0));
-  padding-bottom: 1rem;
-  margin-bottom: 0.5rem;
-  border-bottom: 1px solid var(--line);
+  background: linear-gradient(180deg, rgba(10, 10, 10, 0.98) 85%, rgba(10, 10, 10, 0));
+  padding-bottom: 0.75rem;
 }
 
 .modal-close {
@@ -641,7 +639,6 @@ main {
 .modal-meta {
   display: flex;
   gap: 1.5rem;
-  margin-top: 0.5rem;
   font-size: 10px;
   letter-spacing: 0.16em;
   color: var(--dim);
