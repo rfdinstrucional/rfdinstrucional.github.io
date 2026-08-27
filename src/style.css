@@ -325,8 +325,8 @@ main {
   align-items: center;
   gap: 8px;
   margin-top: 1.5rem;
-  font-size: 10px;
-  letter-spacing: 0.2em;
+  font-size: 11px;
+  letter-spacing: 0.08em;
   color: var(--dim);
   text-decoration: none;
   transition: color var(--t-fast) ease;
@@ -337,6 +337,7 @@ main {
 .status-dot {
   width: 6px;
   height: 6px;
+  flex-shrink: 0;
   background: #8ddca4;
   box-shadow: 0 0 6px rgba(141, 220, 164, 0.6);
   animation: pulse 2s ease-in-out infinite;
