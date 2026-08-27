@@ -192,7 +192,6 @@ projects.forEach((p) => {
     : '';
   tile.innerHTML = `
     ${cover}
-    <span class="tile-id">[${escapeHtml(p.id)}]</span>
     <div class="tile-sweep" aria-hidden="true"></div>
     <div class="tile-bottom">
       <span class="tile-title">${escapeHtml(p.title)}</span>
@@ -205,7 +204,6 @@ projects.forEach((p) => {
 
 /* ---------- modal ---------- */
 const modal = document.getElementById('modal');
-const elId = document.getElementById('modal-id');
 const elTitle = document.getElementById('modal-title');
 const elYear = document.getElementById('modal-year');
 const elRole = document.getElementById('modal-role');
@@ -236,7 +234,6 @@ function openModal(p) {
   modalProject = p;
   modalLang = currentLang;
 
-  elId.textContent = `[${p.id}]`;
   elTitle.textContent = p.title;
   elYear.textContent = `${t['modal.year']} ${p.year}`;
   elRole.textContent = `${t['modal.role']} ${p.role}`;

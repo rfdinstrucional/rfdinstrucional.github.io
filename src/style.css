@@ -93,9 +93,9 @@ main, footer.site-footer {
   padding: 0 clamp(1rem, 4vw, 3rem);
   height: 56px;
   border-bottom: 1px solid var(--line);
-  background: linear-gradient(180deg, rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.08));
-  backdrop-filter: blur(2px);
-  -webkit-backdrop-filter: blur(2px);
+  background: linear-gradient(180deg, rgba(0, 0, 0, 0.9), rgba(0, 0, 0, 0.75));
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
 }
 
 .nav { display: flex; gap: clamp(0.75rem, 2.5vw, 2rem); }
@@ -405,8 +405,6 @@ main {
   transform: scale(1.05);
 }
 
-.tile-id { position: relative; z-index: 1; font-size: 11px; color: var(--faint); letter-spacing: 0.14em; transition: color 0.25s; }
-
 .tile-bottom {
   position: absolute;
   bottom: 0;
@@ -470,9 +468,6 @@ main {
 
 .tile:hover .tile-sweep,
 .tile:focus-visible .tile-sweep { opacity: 1; }
-
-.tile:hover .tile-id,
-.tile:focus-visible .tile-id { color: var(--fg); }
 
 .tile::after {
   content: '';
@@ -577,9 +572,9 @@ main {
   position: sticky;
   top: 0;
   z-index: 2;
-  background: var(--glass-surface);
-  backdrop-filter: var(--blur-glass);
-  -webkit-backdrop-filter: var(--blur-glass);
+  background: linear-gradient(180deg, rgba(0, 0, 0, 0.9), rgba(0, 0, 0, 0.75));
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
   border-bottom: 1px solid var(--line);
   padding: 0.5rem 0 1.25rem;
 }
@@ -633,8 +628,6 @@ main {
 }
 
 .modal-head { display: flex; align-items: center; gap: 0.75rem; }
-
-.modal-id { font-size: 11px; color: var(--faint); }
 
 .modal-head h3 { font-size: 20px; font-weight: 300; letter-spacing: 0.1em; }
 
