@@ -137,14 +137,18 @@ function renderMarkdown(md) {
     const h2 = trimmed.match(/^## (.+)$/);
     if (h2) {
       if (inList) { html.push('</ul>'); inList = false; }
-      html.push(`<h4 class="modal-section-title">${escapeHtml(h2[1])}</h4>`);
+      const text = h2[1].trim();
+      const title = text.startsWith('//') ? text : `// ${text}`;
+      html.push(`<h4 class="modal-section-title">${escapeHtml(title)}</h4>`);
       continue;
     }
 
     const h3 = trimmed.match(/^### (.+)$/);
     if (h3) {
       if (inList) { html.push('</ul>'); inList = false; }
-      html.push(`<h5 class="modal-section-sub">${escapeHtml(h3[1])}</h5>`);
+      const text = h3[1].trim();
+      const title = text.startsWith('//') ? text : `// ${text}`;
+      html.push(`<h5 class="modal-section-sub">${escapeHtml(title)}</h5>`);
       continue;
     }
 
