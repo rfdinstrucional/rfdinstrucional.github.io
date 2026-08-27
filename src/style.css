@@ -145,19 +145,29 @@ main, footer.site-footer {
   appearance: none;
   background: transparent;
   border: 1px solid var(--line);
-  color: var(--dim);
-  font-family: inherit;
-  font-size: 10px;
-  letter-spacing: 0.14em;
-  padding: 4px 8px;
+  padding: 3px 6px;
   cursor: pointer;
-  transition: color var(--t-fast) ease, border-color var(--t-fast) ease;
+  display: grid;
+  place-items: center;
+  line-height: 0;
+  transition: border-color var(--t-fast) ease;
+}
+
+.lang-toggle img {
+  width: 20px;
+  height: 12px;
+  filter: grayscale(1);
+  transition: filter var(--t-fast) ease;
 }
 
 .lang-toggle:hover,
 .lang-toggle:focus-visible {
-  color: var(--fg);
   border-color: var(--line-strong);
+}
+
+.lang-toggle:hover img,
+.lang-toggle:focus-visible img {
+  filter: none;
 }
 
 /* ---------- layout ---------- */
@@ -568,6 +578,16 @@ main {
   pointer-events: none;
 }
 
+.modal-sticky {
+  position: sticky;
+  top: 0;
+  z-index: 2;
+  background: linear-gradient(180deg, rgba(10, 10, 10, 0.98) 80%, rgba(10, 10, 10, 0));
+  padding-bottom: 1rem;
+  margin-bottom: 0.5rem;
+  border-bottom: 1px solid var(--line);
+}
+
 .modal-close {
   position: absolute;
   top: 10px;
@@ -590,17 +610,27 @@ main {
   appearance: none;
   background: transparent;
   border: 1px solid var(--line);
-  color: var(--dim);
-  font-family: inherit;
-  font-size: 11px;
-  letter-spacing: 0.1em;
-  padding: 2px 8px;
+  padding: 2px 5px;
   cursor: pointer;
   flex-shrink: 0;
-  transition: color 0.2s ease, border-color 0.2s ease;
+  line-height: 0;
+  transition: border-color 0.2s ease;
 }
 
-.modal-lang:hover { color: var(--fg); border-color: var(--line-strong); }
+.modal-lang img {
+  width: 20px;
+  height: 12px;
+  filter: grayscale(1);
+  transition: filter 0.2s ease;
+}
+
+.modal-lang:hover {
+  border-color: var(--line-strong);
+}
+
+.modal-lang:hover img {
+  filter: none;
+}
 
 .modal-head { display: flex; align-items: center; gap: 0.75rem; }
 

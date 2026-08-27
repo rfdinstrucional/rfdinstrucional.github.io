@@ -27,7 +27,6 @@ const translations = {
     'modal.role': 'CARGO:',
     'title': 'Rafael Fernando | Designer Instrucional',
     'description': 'Rafael Fernando — Designer Instrucional',
-    'langButton': 'EN',
     'langAria': 'Mudar para inglês'
   },
   en: {
@@ -51,7 +50,6 @@ const translations = {
     'modal.role': 'ROLE:',
     'title': 'Rafael Fernando | Instructional Designer',
     'description': 'Rafael Fernando — Instructional Designer',
-    'langButton': 'PT',
     'langAria': 'Switch to Portuguese'
   }
 };
@@ -77,7 +75,11 @@ function applyTranslations() {
 
   const langBtn = document.querySelector('.lang-toggle');
   if (langBtn) {
-    langBtn.textContent = t.langButton;
+    const img = langBtn.querySelector('img');
+    if (img) {
+      img.src = currentLang === 'pt' ? '/flag-us.svg' : '/flag-br.svg';
+      img.alt = currentLang === 'pt' ? 'US' : 'BR';
+    }
     langBtn.setAttribute('aria-label', t.langAria);
   }
 }
@@ -237,7 +239,8 @@ function openModal(p) {
 
   elTags.innerHTML = '';
 
-  elLang.textContent = modalLang === 'pt' ? 'EN' : 'PT';
+  elLang.querySelector('img').src = modalLang === 'pt' ? '/flag-us.svg' : '/flag-br.svg';
+  elLang.querySelector('img').alt = modalLang === 'pt' ? 'US' : 'BR';
 
   renderModalDesc();
 
@@ -261,7 +264,8 @@ function openModal(p) {
 
 elLang.addEventListener('click', () => {
   modalLang = modalLang === 'pt' ? 'en' : 'pt';
-  elLang.textContent = modalLang === 'pt' ? 'EN' : 'PT';
+  elLang.querySelector('img').src = modalLang === 'pt' ? '/flag-us.svg' : '/flag-br.svg';
+  elLang.querySelector('img').alt = modalLang === 'pt' ? 'US' : 'BR';
   renderModalDesc();
 });
 
