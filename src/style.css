@@ -364,22 +364,6 @@ main {
 }
 
 /* ---------- services ---------- */
-.services-area {
-  margin-top: clamp(2rem, 4vw, 3rem);
-}
-
-.services-head {
-  display: flex;
-  align-items: center;
-  margin-bottom: 1rem;
-}
-
-.services-label {
-  font-size: 11px;
-  letter-spacing: 0.2em;
-  color: var(--dim);
-}
-
 .services-grid {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
@@ -394,8 +378,8 @@ main {
   -webkit-backdrop-filter: var(--blur-glass);
   padding: clamp(1.25rem, 2vw, 1.75rem);
   display: flex;
-  flex-direction: column;
-  justify-content: flex-start;
+  align-items: flex-start;
+  gap: 1.1rem;
   transition: border-color var(--t-fast) ease;
   overflow: hidden;
 }
@@ -404,45 +388,41 @@ main {
   border-color: var(--line-strong);
 }
 
-.service-top {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  margin-bottom: 1.25rem;
-}
-
 .service-icon {
   color: #8ddca4;
+  flex-shrink: 0;
   display: flex;
   align-items: center;
   justify-content: center;
+  margin-top: 0.15rem;
   transition: color var(--t-fast) ease, transform 0.3s ease;
 }
 
 .service-card:hover .service-icon {
   color: var(--fg);
-  transform: scale(1.05);
+  transform: scale(1.08);
 }
 
-.service-index {
-  font-size: 11px;
-  color: var(--faint);
-  letter-spacing: 0.14em;
+.service-content {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
 }
 
 .service-role {
   font-size: 10px;
   letter-spacing: 0.18em;
   color: var(--dim);
-  margin-bottom: 0.4rem;
+  margin-bottom: 0.35rem;
 }
 
 .service-title {
-  font-size: 16px;
+  font-size: 15px;
   font-weight: 400;
   letter-spacing: 0.1em;
   color: var(--fg);
-  margin-bottom: 0.85rem;
+  margin-bottom: 0.75rem;
 }
 
 .service-desc {
@@ -738,8 +718,16 @@ main {
   margin-bottom: 1.5rem;
 }
 
-.cta-top .status {
-  margin-top: 0;
+.cta-status-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 12px;
+  letter-spacing: 0.08em;
+  color: #fff;
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  background: rgba(255, 255, 255, 0.06);
+  padding: 6px 14px;
 }
 
 .cta-title {
@@ -764,24 +752,7 @@ main {
   align-items: center;
   flex-wrap: wrap;
   gap: 1rem;
-  margin-top: 2rem;
-}
-
-.cta-btn {
-  font-size: 11px;
-  padding: 11px 22px;
-  font-weight: 400;
-  letter-spacing: 0.2em;
-  background: rgba(255, 255, 255, 0.92);
-  color: #000;
-  border: 1px solid #fff;
-  transition: background 0.25s ease, color 0.25s ease;
-}
-
-.cta-btn:hover {
-  background: transparent;
-  color: #fff;
-  border-color: var(--line-strong);
+  margin-top: 1.75rem;
 }
 
 .contact-links {
@@ -1114,7 +1085,6 @@ a:focus-visible, button:focus-visible {
   .clients-grid { grid-template-columns: repeat(2, 1fr); }
 
   .cta-actions { flex-direction: column; align-items: stretch; gap: 0.75rem; }
-  .cta-actions .btn { text-align: center; }
 
   .contact-links { width: 100%; display: flex; flex-wrap: wrap; gap: 0.5rem; }
   .contact-links a { flex: 1 1 100px; text-align: center; }
