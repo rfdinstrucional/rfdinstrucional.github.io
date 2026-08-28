@@ -1,6 +1,7 @@
 import './style.css';
 import { initBackground } from './shader.js';
 import { projects } from './data/projects.js';
+import { initAnimations, animateModalOpen, animateModalClose } from './animations.js';
 
 initBackground();
 
@@ -334,7 +335,9 @@ function openModal(p) {
 
   modal.hidden = false;
   document.body.classList.add('modal-open');
-  modal.querySelector('.modal-close').focus();
+  animateModalOpen(modal, () => {
+    modal.querySelector('.modal-close').focus();
+  });
 }
 
 elLang.addEventListener('click', () => {
@@ -345,10 +348,12 @@ elLang.addEventListener('click', () => {
 });
 
 function closeModal() {
-  modal.hidden = true;
-  modalProject = null;
-  document.body.classList.remove('modal-open');
-  if (lastFocus) lastFocus.focus();
+  animateModalClose(modal, () => {
+    modal.hidden = true;
+    modalProject = null;
+    document.body.classList.remove('modal-open');
+    if (lastFocus) lastFocus.focus();
+  });
 }
 
 modal.addEventListener('click', (e) => {
@@ -414,3 +419,6 @@ if (aboutPhoto) {
 
 /* ---------- misc ---------- */
 document.getElementById('year').textContent = new Date().getFullYear();
+
+/* ---------- GSAP Animations Initialization ---------- */
+initAnimations();
