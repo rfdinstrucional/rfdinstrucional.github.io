@@ -9,6 +9,7 @@ const translations = {
   pt: {
     'nav.about': 'SOBRE',
     'nav.portfolio': 'PORTFOLIO',
+    'nav.clients': 'CLIENTES',
     'nav.contact': 'CONTATO',
     'lang.aria': 'Mudar para inglês',
     'about.title': 'SOBRE',
@@ -19,8 +20,43 @@ const translations = {
     'about.edu.2.degree': 'PÓS-GRADUAÇÃO // INOVAÇÃO WEB',
     'about.edu.3.degree': 'BACHARELADO // DESENVOLVIMENTO DE GAMES DIGITAIS',
     'about.status': 'Status: Aberto para Oportunidades - Vamos iniciar um projeto!',
+    'services.header': '// ÁREAS DE ATUAÇÃO & ESPECIALIDADES',
+    'services.s1.role': '// ARQUITETURA PEDAGÓGICA',
+    'services.s1.title': 'DESIGN INSTRUCIONAL',
+    'services.s1.desc': 'Estruturação completa de experiências educacionais fundamentadas em ADDIE, SAM e Taxonomia de Bloom. Roteirização técnica para EAD, treinamentos corporativos, microlearning e produção de materiais interativos focados em retenção real.',
+    'services.s2.role': '// IMERSÃO & INTERATIVIDADE',
+    'services.s2.title': 'EXPERIÊNCIAS (LXD)',
+    'services.s2.desc': 'Design centrado no aprendiz com foco em engajamento ativo. Criação de ambientes imersivos em Realidade Virtual (Meta Quest, WebXR), gamificação estratégica, prototipagem ágil e interfaces interativas que conectam emoção e aprendizado.',
+    'services.s3.role': '// ESTRATÉGIA & EDTECH',
+    'services.s3.title': 'CONSULTORIA',
+    'services.s3.desc': 'Diagnóstico e evolução de ecossistemas educacionais. Implantação e customização de plataformas LMS (Moodle, Rise, Canvas), integração de fluxos com IA generativa para automação de processos instrucionais e auditoria de qualidade pedagógica.',
     'portfolio.title': 'PORTFOLIO',
+    'clients.title': 'CLIENTES',
+    'clients.c1.tag': '// EDTECH & MICROSOFT',
+    'clients.c1.seg': 'Educação, Tecnologia & Inovação',
+    'clients.c1.desc': 'Desenvolvimento de trilhas de capacitação tecnológica, design instrucional de soluções educacionais e arquitetura de materiais interativos.',
+    'clients.c2.tag': '// DESENVOLVIMENTO SOCIAL',
+    'clients.c2.seg': 'Terceiro Setor & Qualificação Profissional',
+    'clients.c2.desc': 'Estruturação de cursos profissionalizantes, arquitetura pedagógica para programas de capacitação e produção de materiais didáticos.',
+    'clients.c3.tag': '// CONSULTORIA EMPRESARIAL',
+    'clients.c3.seg': 'Consultoria & Soluções Corporativas',
+    'clients.c3.desc': 'Desenvolvimento de treinamentos técnicos operacionais, padronização instrucional de procedimentos e módulos de aprendizagem corporativa.',
+    'clients.c4.tag': '// ENGENHARIA & TECH',
+    'clients.c4.seg': 'Engenharia & Inovação Tecnológica',
+    'clients.c4.desc': 'Criação de conteúdos instrucionais para engenharia aplicada, simulações técnicas interativas e capacitação em processos especializados.',
+    'clients.c5.tag': '// PROJETOS & INFRA',
+    'clients.c5.seg': 'Engenharia Civil, Projetos & Infraestrutura',
+    'clients.c5.desc': 'Roteirização e desenvolvimento de programas de capacitação em segurança, normas técnicas e fluxos operacionais de engenharia.',
+    'clients.c6.tag': '// INDÚSTRIA ALIMENTÍCIA',
+    'clients.c6.seg': 'Indústria de Alimentos & Gastronomia',
+    'clients.c6.desc': 'Treinamentos operacionais para boas práticas de fabricação, padronização de qualidade e trilhas de onboarding industrial.',
     'contact.title': 'CONTATO',
+    'cta.status': 'STATUS: DISPONÍVEL PARA NOVOS PROJETOS & CONSULTORIAS',
+    'cta.tag': '// VAMOS_CONVERSAR.sh',
+    'cta.title': 'PRONTO PARA TRANSFORMAR SEU CONTEÚDO EM UMA EXPERIÊNCIA EDUCACIONAL DE ALTO IMPACTO?',
+    'cta.desc': 'Seja para desenvolver cursos completos, arquitetar treinamentos imersivos com Realidade Virtual, estruturar plataformas LMS ou integrar inteligência artificial no seu processo pedagógico — vamos transformar suas ideias em projetos memoráveis.',
+    'cta.btn': 'INICIAR UM PROJETO →',
+    'cta.note': '// RESPOSTA RÁPIDA EM ATÉ 24H',
     'contact.email': 'EMAIL',
     'modal.view': 'VER_PROJETO →',
     'modal.year': 'ANO:',
@@ -32,6 +68,7 @@ const translations = {
   en: {
     'nav.about': 'ABOUT',
     'nav.portfolio': 'PORTFOLIO',
+    'nav.clients': 'CLIENTS',
     'nav.contact': 'CONTACT',
     'lang.aria': 'Switch to Portuguese',
     'about.title': 'ABOUT',
@@ -42,8 +79,43 @@ const translations = {
     'about.edu.2.degree': 'POSTGRADUATE // WEB INNOVATIONS',
     'about.edu.3.degree': 'BACHELOR\'S // DIGITAL GAME DEVELOPMENT',
     'about.status': "Status: Open to Work - Let's start a project!",
+    'services.header': '// SERVICES & SPECIALTIES',
+    'services.s1.role': '// PEDAGOGICAL ARCHITECTURE',
+    'services.s1.title': 'INSTRUCTIONAL DESIGN',
+    'services.s1.desc': 'Complete structuring of educational experiences based on ADDIE, SAM, and Bloom\'s Taxonomy. Technical scriptwriting for e-learning, corporate training, microlearning, and interactive materials focused on genuine retention.',
+    'services.s2.role': '// IMMERSION & INTERACTIVITY',
+    'services.s2.title': 'EXPERIENCES (LXD)',
+    'services.s2.desc': 'Learner-centered design focused on active engagement. Creating immersive Virtual Reality environments (Meta Quest, WebXR), applied gamification, agile prototyping, and interactive interfaces connecting emotion and learning.',
+    'services.s3.role': '// STRATEGY & EDTECH',
+    'services.s3.title': 'CONSULTING',
+    'services.s3.desc': 'Diagnosis and evolution of educational ecosystems. LMS implementation and customization (Moodle, Rise, Canvas), generative AI integration for instructional process automation, and pedagogical quality audits.',
     'portfolio.title': 'PORTFOLIO',
+    'clients.title': 'CLIENTS',
+    'clients.c1.tag': '// EDTECH & MICROSOFT',
+    'clients.c1.seg': 'Education, Technology & Innovation',
+    'clients.c1.desc': 'Development of tech learning paths, instructional design for educational solutions, and interactive learning architecture.',
+    'clients.c2.tag': '// SOCIAL DEVELOPMENT',
+    'clients.c2.seg': 'Nonprofit & Professional Qualification',
+    'clients.c2.desc': 'Structuring vocational courses, pedagogical architecture for training programs, and educational content production.',
+    'clients.c3.tag': '// BUSINESS CONSULTING',
+    'clients.c3.seg': 'Corporate Consulting & Solutions',
+    'clients.c3.desc': 'Development of technical operational training, instructional standardization of procedures, and corporate learning modules.',
+    'clients.c4.tag': '// ENGINEERING & TECH',
+    'clients.c4.seg': 'Engineering & Tech Innovation',
+    'clients.c4.desc': 'Creation of instructional content for applied engineering, interactive technical simulations, and specialized process training.',
+    'clients.c5.tag': '// PROJECTS & INFRA',
+    'clients.c5.seg': 'Civil Engineering & Infrastructure',
+    'clients.c5.desc': 'Scriptwriting and development of training programs in safety, technical standards, and engineering workflows.',
+    'clients.c6.tag': '// FOOD INDUSTRY',
+    'clients.c6.seg': 'Food Industry & Manufacturing',
+    'clients.c6.desc': 'Operational training for good manufacturing practices, quality standardization, and industrial onboarding paths.',
     'contact.title': 'CONTACT',
+    'cta.status': 'STATUS: OPEN FOR NEW PROJECTS & CONSULTING',
+    'cta.tag': '// LETS_TALK.sh',
+    'cta.title': 'READY TO TRANSFORM YOUR CONTENT INTO A HIGH-IMPACT LEARNING EXPERIENCE?',
+    'cta.desc': 'Whether developing complete courses, architecting immersive Virtual Reality training, configuring LMS platforms, or integrating generative AI into your learning workflow — let\'s turn your ideas into memorable projects.',
+    'cta.btn': 'START A PROJECT →',
+    'cta.note': '// FAST RESPONSE WITHIN 24H',
     'contact.email': 'EMAIL',
     'modal.view': 'VIEW_PROJECT →',
     'modal.year': 'YEAR:',
@@ -287,10 +359,34 @@ document.addEventListener('keydown', (e) => {
 
 /* ---------- nav active state ---------- */
 const navLinks = [...document.querySelectorAll('.nav a')];
+const sections = [...document.querySelectorAll('section[id]')];
+
+function updateActiveNav(activeId) {
+  navLinks.forEach((link) => {
+    const href = link.getAttribute('href');
+    link.classList.toggle('active', href === `#${activeId}`);
+  });
+}
+
+if ('IntersectionObserver' in window) {
+  const navObserver = new IntersectionObserver(
+    (entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          updateActiveNav(entry.target.id);
+        }
+      });
+    },
+    { rootMargin: '-30% 0px -55% 0px' }
+  );
+
+  sections.forEach((sec) => navObserver.observe(sec));
+}
 
 navLinks.forEach((a) => {
   a.addEventListener('click', () => {
-    navLinks.forEach((link) => link.classList.toggle('active', link === a));
+    const targetId = a.getAttribute('href')?.replace('#', '');
+    if (targetId) updateActiveNav(targetId);
   });
 });
 
