@@ -338,7 +338,7 @@ function initMagneticButtons() {
 }
 
 /**
- * Animate modal opening
+ * Animate modal opening with Pop effect (small -> overshoots slightly bigger -> settles at 1)
  */
 export function animateModalOpen(modalEl, onComplete) {
   if (prefersReducedMotion) {
@@ -353,19 +353,23 @@ export function animateModalOpen(modalEl, onComplete) {
   gsap.killTweensOf([backdrop, windowEl, contentEls]);
 
   if (backdrop) {
-    gsap.fromTo(backdrop, { opacity: 0 }, { opacity: 1, duration: 0.3, ease: 'power2.out' });
+    gsap.fromTo(backdrop, { opacity: 0 }, { opacity: 1, duration: 0.35, ease: 'power2.out' });
   }
 
   if (windowEl) {
     gsap.fromTo(
       windowEl,
-      { opacity: 0, y: 35, scale: 0.97 },
       {
-        opacity: 1,
-        y: 0,
-        scale: 1,
-        duration: 0.4,
-        ease: 'power3.out',
+        opacity: 0,
+        scale: 0.5,
+        transformOrigin: 'center center'
+      },
+      {
+        keyframes: [
+          { scale: 1.06, opacity: 1, duration: 0.28, ease: 'power2.out' },
+          { scale: 0.98, duration: 0.12, ease: 'power1.inOut' },
+          { scale: 1.0, duration: 0.1, ease: 'power1.out' }
+        ],
         onComplete
       }
     );
@@ -374,13 +378,13 @@ export function animateModalOpen(modalEl, onComplete) {
   if (contentEls.length) {
     gsap.fromTo(
       contentEls,
-      { opacity: 0, y: 15 },
+      { opacity: 0, y: 12 },
       {
         opacity: 1,
         y: 0,
-        duration: 0.4,
-        stagger: 0.05,
-        delay: 0.1,
+        duration: 0.35,
+        stagger: 0.04,
+        delay: 0.15,
         ease: 'power2.out'
       }
     );
@@ -388,7 +392,7 @@ export function animateModalOpen(modalEl, onComplete) {
 }
 
 /**
- * Animate modal closing
+ * Animate modal closing with Pop Out effect (pops slightly bigger -> shrinks down small)
  */
 export function animateModalClose(modalEl, onComplete) {
   if (prefersReducedMotion) {
@@ -409,19 +413,18 @@ export function animateModalClose(modalEl, onComplete) {
 
   if (windowEl) {
     tl.to(windowEl, {
-      opacity: 0,
-      y: 20,
-      scale: 0.98,
-      duration: 0.22,
-      ease: 'power2.in'
+      keyframes: [
+        { scale: 1.05, duration: 0.1, ease: 'power1.out' },
+        { scale: 0.5, opacity: 0, duration: 0.22, ease: 'power2.in' }
+      ]
     }, 0);
   }
 
   if (backdrop) {
     tl.to(backdrop, {
       opacity: 0,
-      duration: 0.2,
+      duration: 0.25,
       ease: 'power2.in'
-    }, 0.05);
+    }, 0.08);
   }
 }
