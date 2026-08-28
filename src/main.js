@@ -34,29 +34,26 @@ const translations = {
     'clients.title': 'CLIENTES',
     'clients.c1.tag': '// EDTECH & MICROSOFT',
     'clients.c1.seg': 'Educação, Tecnologia & Inovação',
-    'clients.c1.desc': 'Desenvolvimento de trilhas de capacitação tecnológica, design instrucional de soluções educacionais e arquitetura de materiais interativos.',
+    'clients.c1.desc': 'Trilhas de capacitação tecnológica, design instrucional de soluções educacionais e materiais interativos.',
     'clients.c2.tag': '// DESENVOLVIMENTO SOCIAL',
     'clients.c2.seg': 'Terceiro Setor & Qualificação Profissional',
-    'clients.c2.desc': 'Estruturação de cursos profissionalizantes, arquitetura pedagógica para programas de capacitação e produção de materiais didáticos.',
+    'clients.c2.desc': 'Estruturação de cursos profissionalizantes, arquitetura pedagógica para capacitação e materiais didáticos.',
     'clients.c3.tag': '// CONSULTORIA EMPRESARIAL',
     'clients.c3.seg': 'Consultoria & Soluções Corporativas',
-    'clients.c3.desc': 'Desenvolvimento de treinamentos técnicos operacionais, padronização instrucional de procedimentos e módulos de aprendizagem corporativa.',
+    'clients.c3.desc': 'Treinamentos técnicos operacionais, padronização de procedimentos e módulos de aprendizagem corporativa.',
     'clients.c4.tag': '// ENGENHARIA & TECH',
     'clients.c4.seg': 'Engenharia & Inovação Tecnológica',
-    'clients.c4.desc': 'Criação de conteúdos instrucionais para engenharia aplicada, simulações técnicas interativas e capacitação em processos especializados.',
+    'clients.c4.desc': 'Conteúdos instrucionais para engenharia aplicada, simulações técnicas interativas e capacitação técnica.',
     'clients.c5.tag': '// PROJETOS & INFRA',
     'clients.c5.seg': 'Engenharia Civil, Projetos & Infraestrutura',
-    'clients.c5.desc': 'Roteirização e desenvolvimento de programas de capacitação em segurança, normas técnicas e fluxos operacionais de engenharia.',
+    'clients.c5.desc': 'Roteirização e desenvolvimento de programas de capacitação em segurança, normas técnicas e processos.',
     'clients.c6.tag': '// INDÚSTRIA ALIMENTÍCIA',
     'clients.c6.seg': 'Indústria de Alimentos & Gastronomia',
-    'clients.c6.desc': 'Treinamentos operacionais para boas práticas de fabricação, padronização de qualidade e trilhas de onboarding industrial.',
+    'clients.c6.desc': 'Treinamentos operacionais para boas práticas de fabricação, padronização de qualidade e onboarding.',
     'contact.title': 'CONTATO',
-    'cta.status': 'STATUS: DISPONÍVEL PARA NOVOS PROJETOS & CONSULTORIAS',
-    'cta.tag': '// VAMOS_CONVERSAR.sh',
     'cta.title': 'PRONTO PARA TRANSFORMAR SEU CONTEÚDO EM UMA EXPERIÊNCIA EDUCACIONAL DE ALTO IMPACTO?',
     'cta.desc': 'Seja para desenvolver cursos completos, arquitetar treinamentos imersivos com Realidade Virtual, estruturar plataformas LMS ou integrar inteligência artificial no seu processo pedagógico — vamos transformar suas ideias em projetos memoráveis.',
     'cta.btn': 'INICIAR UM PROJETO →',
-    'cta.note': '// RESPOSTA RÁPIDA EM ATÉ 24H',
     'contact.email': 'EMAIL',
     'modal.view': 'VER_PROJETO →',
     'modal.year': 'ANO:',
@@ -93,29 +90,26 @@ const translations = {
     'clients.title': 'CLIENTS',
     'clients.c1.tag': '// EDTECH & MICROSOFT',
     'clients.c1.seg': 'Education, Technology & Innovation',
-    'clients.c1.desc': 'Development of tech learning paths, instructional design for educational solutions, and interactive learning architecture.',
+    'clients.c1.desc': 'Tech learning paths, instructional design for educational solutions, and interactive learning media.',
     'clients.c2.tag': '// SOCIAL DEVELOPMENT',
     'clients.c2.seg': 'Nonprofit & Professional Qualification',
-    'clients.c2.desc': 'Structuring vocational courses, pedagogical architecture for training programs, and educational content production.',
+    'clients.c2.desc': 'Structuring vocational courses, pedagogical architecture for training, and instructional material design.',
     'clients.c3.tag': '// BUSINESS CONSULTING',
     'clients.c3.seg': 'Corporate Consulting & Solutions',
-    'clients.c3.desc': 'Development of technical operational training, instructional standardization of procedures, and corporate learning modules.',
+    'clients.c3.desc': 'Technical operational training, instructional standard operating procedures, and corporate learning modules.',
     'clients.c4.tag': '// ENGINEERING & TECH',
     'clients.c4.seg': 'Engineering & Tech Innovation',
-    'clients.c4.desc': 'Creation of instructional content for applied engineering, interactive technical simulations, and specialized process training.',
+    'clients.c4.desc': 'Instructional content for applied engineering, interactive technical simulations, and specialized training.',
     'clients.c5.tag': '// PROJECTS & INFRA',
     'clients.c5.seg': 'Civil Engineering & Infrastructure',
     'clients.c5.desc': 'Scriptwriting and development of training programs in safety, technical standards, and engineering workflows.',
     'clients.c6.tag': '// FOOD INDUSTRY',
     'clients.c6.seg': 'Food Industry & Manufacturing',
-    'clients.c6.desc': 'Operational training for good manufacturing practices, quality standardization, and industrial onboarding paths.',
+    'clients.c6.desc': 'Operational training for good manufacturing practices (GMP), quality standards, and industrial onboarding.',
     'contact.title': 'CONTACT',
-    'cta.status': 'STATUS: OPEN FOR NEW PROJECTS & CONSULTING',
-    'cta.tag': '// LETS_TALK.sh',
     'cta.title': 'READY TO TRANSFORM YOUR CONTENT INTO A HIGH-IMPACT LEARNING EXPERIENCE?',
     'cta.desc': 'Whether developing complete courses, architecting immersive Virtual Reality training, configuring LMS platforms, or integrating generative AI into your learning workflow — let\'s turn your ideas into memorable projects.',
     'cta.btn': 'START A PROJECT →',
-    'cta.note': '// FAST RESPONSE WITHIN 24H',
     'contact.email': 'EMAIL',
     'modal.view': 'VIEW_PROJECT →',
     'modal.year': 'YEAR:',
@@ -126,7 +120,15 @@ const translations = {
   }
 };
 
-let currentLang = localStorage.getItem('lang') || 'pt';
+let currentLang = 'pt';
+try {
+  const saved = localStorage.getItem('lang');
+  if (saved === 'en' || saved === 'pt') {
+    currentLang = saved;
+  }
+} catch (e) {
+  currentLang = 'pt';
+}
 
 function applyTranslations() {
   const t = translations[currentLang];
