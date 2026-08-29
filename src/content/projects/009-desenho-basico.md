@@ -7,7 +7,7 @@ tags:
   - MOODLE
   - ARTES
   - CURSO
-cover: ./assets/cursodesenho.jpeg
+cover: ./assets/cursodesenho.webp
 link: "#"
 video: null
 ---
@@ -36,7 +36,7 @@ Moodle com upload de imagens das atividades, fóruns de galeria para peer review
 
 Curso com 6 módulos, 48 aulas em vídeo (18h), 30 atividades práticas e 6 projetos avaliativos. Nota média de satisfação: 4.9/5.0. 88% dos concluintes relatam que o curso despertou interesse em continuar estudando arte.
 
-![Screenshot do projeto](./assets/cursodesenho.jpeg)
+![Screenshot do projeto](./assets/cursodesenho.webp)
 
 desc_en:
 
@@ -64,4 +64,4 @@ Moodle with image uploads for activities, gallery forums for peer review, high-q
 
 Course with 6 modules, 48 video lessons (18h), 30 practical activities, and 6 assessed projects. Average satisfaction score: 4.9/5.0. 88% of completers report that the course sparked interest in continuing to study art.
 
-![Project screenshot](./assets/cursodesenho.jpeg)
+![Project screenshot](./assets/cursodesenho.webp)

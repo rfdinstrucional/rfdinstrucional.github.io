@@ -7,7 +7,7 @@ tags:
   - MOODLE
   - 3D
   - CURSO
-cover: ./assets/cursoblender.jpeg
+cover: ./assets/cursoblender.webp
 link: "#"
 video: null
 ---
@@ -36,7 +36,7 @@ Hospedado no Moodle com atividades diversificadas: fóruns de discussão, tarefa
 
 Curso completo com 12 módulos, 84 aulas em vídeo (48h de conteúdo), 36 atividades práticas e 12 projetos avaliativos. Taxa de conclusão de 67% — 3x acima da média de cursos online abertos. Nota média de satisfação: 4.7/5.0.
 
-![Screenshot do projeto](./assets/cursoblender.jpeg)
+![Screenshot do projeto](./assets/cursoblender.webp)
 
 desc_en:
 
@@ -64,4 +64,4 @@ Hosted on Moodle with diverse activities: discussion forums, file upload assignm
 
 Complete course with 12 modules, 84 video lessons (48h of content), 36 practical activities, and 12 assessed projects. Completion rate of 67% — 3x above the average for open online courses. Average satisfaction score: 4.7/5.0.
 
-![Project screenshot](./assets/cursoblender.jpeg)
+![Project screenshot](./assets/cursoblender.webp)

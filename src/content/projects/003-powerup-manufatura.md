@@ -7,7 +7,7 @@ tags:
   - GAMIFICAÇÃO
   - THREEJS
   - MANUFATURA
-cover: ./assets/assembly.jpeg
+cover: ./assets/assembly.webp
 link: "#"
 video: null
 ---
@@ -36,7 +36,7 @@ Interface 3D em Three.js com simulador de impressão 3D integrado. O aluno proje
 
 Fase completada por 85 alunos. A combinação das 3 fases (Hardware + Software + Manufatura) resultou em uma experiência de aprendizagem STEAM completa, onde o aluno conecta conceitos de eletrônica, código e fabricação em um único projeto narrativo.
 
-![Screenshot do projeto](./assets/assembly.jpeg)
+![Screenshot do projeto](./assets/assembly.webp)
 
 desc_en:
 
@@ -64,4 +64,4 @@ The phase integrates Project-Based Learning with Design Thinking. Students go th
 
 Completed by 85 students. The combination of all 3 phases (Hardware + Software + Assembly) resulted in a complete STEAM learning experience, where students connect electronics, coding, and fabrication concepts in a single narrative project.
 
-![Project screenshot](./assets/assembly.jpeg)
+![Project screenshot](./assets/assembly.webp)

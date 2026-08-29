@@ -7,7 +7,7 @@ tags:
   - MOODLE
   - PROGRAMAÇÃO
   - CURSO
-cover: ./assets/cursocodigo.jpeg
+cover: ./assets/cursocodigo.webp
 link: "#"
 video: null
 ---
@@ -36,7 +36,7 @@ Moodle com atividades de código integrado (CodeRunner), quizzes adaptativos, v�
 
 Curso com 8 módulos, 64 aulas (24h), 48 exercícios práticos e 8 projetos avaliativos. A evolução medida por pré/pós-teste mostrou ganho significativo na capacidade de resolver problemas com lógica de programação. 82% dos concluintes relatam confiança para aprender qualquer linguagem.
 
-![Screenshot do projeto](./assets/cursocodigo.jpeg)
+![Screenshot do projeto](./assets/cursocodigo.webp)
 
 desc_en:
 
@@ -64,4 +64,4 @@ Moodle with integrated code activities (CodeRunner), adaptive quizzes, short vid
 
 Course with 8 modules, 64 lessons (24h), 48 practical exercises, and 8 assessed projects. Pre/post-test measurement showed significant improvement in problem-solving with programming logic. 82% of completers report confidence to learn any language.
 
-![Project screenshot](./assets/cursocodigo.jpeg)
+![Project screenshot](./assets/cursocodigo.webp)

@@ -7,7 +7,7 @@ tags:
   - GEOGRAFIA
   - THREEJS
   - EXPLORAÇÃO
-cover: ./assets/worldtour.jpeg
+cover: ./assets/worldtour.webp
 link: "#"
 video: null
 ---
@@ -35,7 +35,7 @@ Globo 3D renderizado em Three.js com texturas de satélite de alta resolução. 
 
 Protótipo funcional com 50 países mapeados e 6 camadas de informação por nação. Testado com 40 alunos do ensino fundamental II. A retenção de informações geográficas aumentou de forma significativa comparada ao uso de mapa plano. 96% dos alunos preferiram o globo 3D ao atlas impresso.
 
-![Screenshot do projeto](./assets/worldtour.jpeg)
+![Screenshot do projeto](./assets/worldtour.webp)
 
 desc_en:
 
@@ -62,4 +62,4 @@ Exploration-Based Learning was applied, where the learner drives their own disco
 
 Functional prototype with 50 countries mapped and 6 information layers per nation. Tested with 40 elementary school students. Retention of geographic information increased significantly compared to flat map usage. 96% of students preferred the 3D globe to the printed atlas.
 
-![Project screenshot](./assets/worldtour.jpeg)
+![Project screenshot](./assets/worldtour.webp)

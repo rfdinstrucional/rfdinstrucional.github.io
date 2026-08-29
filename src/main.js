@@ -17,6 +17,15 @@ const translations = {
     'about.title': 'SOBRE',
     'about.role': '// DESIGNER INSTRUCIONAL TÉCNICO',
     'about.desc': 'Designer Instrucional técnico com 9 anos transformando conhecimento em experiências educacionais imersivas e 12 anos no terceiro setor. Especialista em arquitetura de aprendizagem (ADDIE, SAM, Taxonomia de Bloom) e desenvolvimento web full-stack. Domina o ciclo completo: da análise instrucional à implementação em plataformas LMS (Moodle, Articulate Storyline/Rise), passando por prototipagem interativa, gamificação, automação com IA generativa e experiências em Realidade Virtual (Meta Quest, WebXR, ShapesXR, Gravity Sketch). Fluente em HTML/CSS/JS, React, Next.js, Node.js, Three.js e WebGL — sempre conectado às tecnologias que definem o futuro do aprendizado digital.',
+    'about.tools': [
+      'HTML, CSS, JS, NODE, VITE, GITHUB',
+      'REACT, NEXTJS, THREEJS, R3F, WEBGL',
+      'META QUEST, WEBXR SDK, SHAPESXR, GRAVITY SKETCH',
+      'FIGMA, RIVE, BLENDER, KRITA',
+      'STORYLINE, RISE, MOODLE, CANVAS LMS',
+      'AI STUDIO, OPENCODE, ANTIGRAVITY',
+      'HYPERFRAMES, STITCH, FLOW'
+    ],
     'about.edu.title': '// FORMAÇÃO & ESPECIALIZAÇÕES',
     'about.edu.1.degree': 'PÓS-GRADUAÇÃO // DESIGN INSTRUCIONAL',
     'about.edu.2.degree': 'PÓS-GRADUAÇÃO // INOVAÇÃO WEB',
@@ -59,7 +68,7 @@ const translations = {
     'modal.view': 'VER_PROJETO →',
     'modal.year': 'ANO:',
     'modal.role': 'CARGO:',
-    'title': 'Rafael Fernando | Designer Instrucional',
+    'title': 'Designer Instrucional Técnico | Rafael Fernando — Cursos EAD, LMS, VR & IA',
     'description': 'Rafael Fernando — Designer Instrucional',
     'langAria': 'Mudar para inglês'
   },
@@ -73,6 +82,15 @@ const translations = {
     'about.title': 'ABOUT',
     'about.role': '// TECHNICAL INSTRUCTIONAL DESIGNER',
     'about.desc': 'Technical Instructional Designer with 9 years transforming knowledge into immersive educational experiences and 12 years in the nonprofit sector. Expert in learning architecture (ADDIE, SAM, Bloom\'s Taxonomy) and full-stack web development. Mastering the complete cycle: from instructional analysis to LMS implementation (Moodle, Articulate Storyline/Rise), through interactive prototyping, gamification, generative AI automation, and Virtual Reality experiences (Meta Quest, WebXR, ShapesXR, Gravity Sketch). Fluent in HTML/CSS/JS, React, Next.js, Node.js, Three.js, and WebGL — always connected to the technologies shaping the future of digital learning.',
+    'about.tools': [
+      'HTML, CSS, JS, NODE, VITE, GITHUB',
+      'REACT, NEXTJS, THREEJS, R3F, WEBGL',
+      'META QUEST, WEBXR SDK, SHAPESXR, GRAVITY SKETCH',
+      'FIGMA, RIVE, BLENDER, KRITA',
+      'STORYLINE, RISE, MOODLE, CANVAS LMS',
+      'AI STUDIO, OPENCODE, ANTIGRAVITY',
+      'HYPERFRAMES, STITCH, FLOW'
+    ],
     'about.edu.title': '// EDUCATION & SPECIALIZATIONS',
     'about.edu.1.degree': 'POSTGRADUATE // INSTRUCTIONAL DESIGN',
     'about.edu.2.degree': 'POSTGRADUATE // WEB INNOVATIONS',
@@ -115,7 +133,7 @@ const translations = {
     'modal.view': 'VIEW_PROJECT →',
     'modal.year': 'YEAR:',
     'modal.role': 'ROLE:',
-    'title': 'Rafael Fernando | Instructional Designer',
+    'title': 'Instructional Designer | Rafael Fernando — E-learning, LMS, VR & AI',
     'description': 'Rafael Fernando — Instructional Designer',
     'langAria': 'Switch to Portuguese'
   }
@@ -123,8 +141,11 @@ const translations = {
 
 let currentLang = 'pt';
 try {
+  const urlLang = new URLSearchParams(window.location.search).get('lang');
   const saved = localStorage.getItem('lang');
-  if (saved === 'en' || saved === 'pt') {
+  if (urlLang === 'en' || urlLang === 'pt') {
+    currentLang = urlLang;
+  } else if (saved === 'en' || saved === 'pt') {
     currentLang = saved;
   }
 } catch (e) {
@@ -142,6 +163,15 @@ function applyTranslations() {
   document.querySelectorAll('[data-i18n-aria]').forEach((el) => {
     const key = el.getAttribute('data-i18n-aria');
     if (t[key]) el.setAttribute('aria-label', t[key]);
+  });
+
+  document.querySelectorAll('[data-i18n-list]').forEach((el) => {
+    const key = el.getAttribute('data-i18n-list');
+    const items = t[key];
+    if (!Array.isArray(items)) return;
+    el.querySelectorAll('li').forEach((li, i) => {
+      if (items[i]) li.textContent = items[i];
+    });
   });
 
   document.title = t.title;
@@ -266,7 +296,7 @@ projects.forEach((p) => {
     ? `<img class="tile-cover" src="${escapeHtml(safeUrl(p.cover))}" alt="" loading="lazy" decoding="async" />`
     : '';
   tile.innerHTML = `
-    ${cover}
+    <div class="tile-cover-wrap">${cover}</div>
     <div class="tile-sweep" aria-hidden="true"></div>
     <div class="tile-bottom">
       <span class="tile-title">${escapeHtml(p.title)}</span>
@@ -282,9 +312,9 @@ const modal = document.getElementById('modal');
 const elTitle = document.getElementById('modal-title');
 const elYear = document.getElementById('modal-year');
 const elRole = document.getElementById('modal-role');
-const elTags = document.getElementById('modal-tags');
 const elGallery = document.getElementById('modal-gallery');
 const elVideo = document.getElementById('modal-video');
+
 const elDesc = document.getElementById('modal-desc');
 const elActions = document.getElementById('modal-actions');
 const elLink = document.getElementById('modal-link');
@@ -312,8 +342,6 @@ function openModal(p) {
   elTitle.textContent = p.title;
   elYear.textContent = `${t['modal.year']} ${p.year}`;
   elRole.textContent = `${t['modal.role']} ${p.role}`;
-
-  elTags.innerHTML = '';
 
   elLang.querySelector('img').src = modalLang === 'pt' ? '/flag-us.svg' : '/flag-br.svg';
   elLang.querySelector('img').alt = modalLang === 'pt' ? 'US' : 'BR';

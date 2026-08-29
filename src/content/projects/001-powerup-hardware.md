@@ -7,7 +7,7 @@ tags:
   - GAMIFICAÇÃO
   - THREEJS
   - CIRCUITOS
-cover: ./assets/circuits.jpeg
+cover: ./assets/circuits.webp
 link: "#"
 video: null
 ---
@@ -35,7 +35,7 @@ Desenvolvido com Three.js e React Three Fiber para rendering 3D no navegador, co
 
 Em pilotagem com 120 alunos do ensino médio, a retenção de conceitos sobre circuitos aumentou significativamente comparado à aula expositiva. A taxa de conclusão das fases foi de 89%, com tempo médio de engajamento de 34 minutos por sessão.
 
-![Screenshot do projeto](./assets/circuits.jpeg)
+![Screenshot do projeto](./assets/circuits.webp)
 
 desc_en:
 
@@ -62,4 +62,4 @@ Built with Three.js and React Three Fiber for in-browser 3D rendering, with top-
 
 In a pilot with 120 high school students, retention of circuit concepts increased significantly compared to traditional lectures. Phase completion rate was 89%, with an average engagement time of 34 minutes per session.
 
-![Project screenshot](./assets/circuits.jpeg)
+![Project screenshot](./assets/circuits.webp)

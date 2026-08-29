@@ -248,15 +248,18 @@ export function initAnimations() {
     }
   }
 
-  // 8. 3D Tilt & Interactive Mouse Glow for Cards
+  // 8. Mouse Glow for Cards
   initCardInteractions();
 
-  // 9. Magnetic Buttons
+  // 9. Shake applied to the portfolio photo only
+  initPhotoShake();
+
+  // 10. Magnetic Buttons
   initMagneticButtons();
 }
 
 /**
- * 3D Tilt & Mouse Spotlight for interactive cards
+ * Mouse spotlight for interactive cards (glow only — no shake)
  */
 function initCardInteractions() {
   const cards = document.querySelectorAll('.service-card, .client-card, .tile');
@@ -269,14 +272,33 @@ function initCardInteractions() {
       const x = e.clientX - rect.left;
       const y = e.clientY - rect.top;
 
-      const centerX = rect.width / 2;
-      const centerY = rect.height / 2;
+      if (sweep) {
+        sweep.style.background = `radial-gradient(circle at ${x}px ${y}px, rgba(255, 255, 255, 0.09), rgba(255, 255, 255, 0) 65%)`;
+      }
+    });
 
-      // Subtle 3D rotation
-      const rotateX = ((y - centerY) / centerY) * -5;
-      const rotateY = ((x - centerX) / centerX) * 5;
+    card.addEventListener('mouseleave', () => {
+      if (sweep) {
+        sweep.style.background = '';
+      }
+    });
+  });
+}
 
-      gsap.to(card, {
+/**
+ * Shake (3D tilt) applied only to the portfolio photo (tile cover)
+ */
+function initPhotoShake() {
+  document.querySelectorAll('.tile-cover-wrap').forEach((wrap) => {
+    wrap.addEventListener('mousemove', (e) => {
+      const rect = wrap.getBoundingClientRect();
+      const x = (e.clientX - rect.left) / rect.width;
+      const y = (e.clientY - rect.top) / rect.height;
+
+      const rotateY = (x - 0.5) * 10;
+      const rotateX = (0.5 - y) * 10;
+
+      gsap.to(wrap, {
         rotationX: rotateX,
         rotationY: rotateY,
         transformPerspective: 900,
@@ -284,24 +306,15 @@ function initCardInteractions() {
         duration: 0.3,
         ease: 'power1.out'
       });
-
-      // Update sweep radial position
-      if (sweep) {
-        sweep.style.background = `radial-gradient(circle at ${x}px ${y}px, rgba(255, 255, 255, 0.09), rgba(255, 255, 255, 0) 65%)`;
-      }
     });
 
-    card.addEventListener('mouseleave', () => {
-      gsap.to(card, {
+    wrap.addEventListener('mouseleave', () => {
+      gsap.to(wrap, {
         rotationX: 0,
         rotationY: 0,
         duration: 0.6,
         ease: 'power2.out'
       });
-
-      if (sweep) {
-        sweep.style.background = '';
-      }
     });
   });
 }
