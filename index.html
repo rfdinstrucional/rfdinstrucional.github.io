@@ -47,12 +47,12 @@
       http-equiv="Content-Security-Policy"
       content="
         default-src 'none';
-        script-src 'self' 'unsafe-inline' https://www.googletagmanager.com;
-        style-src 'self' 'unsafe-inline' https://fonts.googleapis.com;
-        img-src 'self' data: https://www.google-analytics.com https://*.google-analytics.com https://*.googletagmanager.com;
+        script-src 'self' 'unsafe-inline' https://www.googletagmanager.com https://platform.linkedin.com https://badges.linkedin.com;
+        style-src 'self' 'unsafe-inline' https://fonts.googleapis.com https://badges.linkedin.com;
+        img-src 'self' data: https://www.google-analytics.com https://*.google-analytics.com https://*.googletagmanager.com https://platform.linkedin.com https://badges.linkedin.com https://*.licdn.com;
         font-src 'self' https://fonts.gstatic.com;
-        connect-src 'self' https://www.google-analytics.com https://*.google-analytics.com https://*.analytics.google.com https://*.googletagmanager.com;
-        frame-src https://www.youtube.com;
+        connect-src 'self' https://www.google-analytics.com https://*.google-analytics.com https://*.analytics.google.com https://*.googletagmanager.com https://platform.linkedin.com https://badges.linkedin.com https://*.licdn.com;
+        frame-src https://www.youtube.com https://platform.linkedin.com https://badges.linkedin.com;
         media-src 'self';
         object-src 'none';
         base-uri 'self';
@@ -71,6 +71,8 @@
     </script>
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <!-- LinkedIn profile badge -->
+    <script src="https://platform.linkedin.com/badges/js/profile.js" async defer type="text/javascript"></script>
     <link
       href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@100;200;300;400;500&display=swap"
       rel="stylesheet"
@@ -446,20 +448,30 @@
 
         <!-- Chamativo CTA Card with Contact Links inside -->
         <div class="card cta-card">
-          <h3 class="cta-title" data-i18n="cta.title">
-            PRONTO PARA TRANSFORMAR SEU CONTEÚDO EM UMA EXPERIÊNCIA EDUCACIONAL DE ALTO IMPACTO?
-          </h3>
+          <div class="cta-grid">
+            <div class="cta-main">
+              <h3 class="cta-title" data-i18n="cta.title">
+                PRONTO PARA TRANSFORMAR SEU CONTEÚDO EM UMA EXPERIÊNCIA EDUCACIONAL DE ALTO IMPACTO?
+              </h3>
 
-          <p class="cta-desc" data-i18n="cta.desc">
-            Seja para desenvolver cursos completos, arquitetar treinamentos imersivos com Realidade Virtual, estruturar plataformas LMS ou integrar inteligência artificial no seu processo pedagógico — vamos transformar suas ideias em projetos memoráveis.
-          </p>
+              <p class="cta-desc" data-i18n="cta.desc">
+                Seja para desenvolver cursos completos, arquitetar treinamentos imersivos com Realidade Virtual, estruturar plataformas LMS ou integrar inteligência artificial no seu processo pedagógico — vamos transformar suas ideias em projetos memoráveis.
+              </p>
 
-          <div class="cta-actions">
-            <nav class="contact-links" aria-label="Contact links">
-              <a href="mailto:rfdinstrucional@gmail.com" data-i18n="contact.email">EMAIL</a>
-              <a href="https://linkedin.com/in/rfdinstrucional" target="_blank" rel="noopener noreferrer">LINKEDIN</a>
-              <a href="https://github.com/rfdinstrucional" target="_blank" rel="noopener noreferrer">GITHUB</a>
-            </nav>
+              <div class="cta-actions">
+                <nav class="contact-links" aria-label="Contact links">
+                  <a href="mailto:rfdinstrucional@gmail.com" data-i18n="contact.email">EMAIL</a>
+                  <a href="https://linkedin.com/in/rfdinstrucional" target="_blank" rel="noopener noreferrer">LINKEDIN</a>
+                  <a href="https://github.com/rfdinstrucional" target="_blank" rel="noopener noreferrer">GITHUB</a>
+                </nav>
+              </div>
+            </div>
+
+            <aside class="cta-badge" aria-label="LinkedIn profile">
+              <div class="badge-base LI-profile-badge" data-locale="pt_BR" data-size="large" data-theme="dark" data-type="HORIZONTAL" data-vanity="rfdinstrucional" data-version="v1">
+                <a class="badge-base__link LI-simple-link" href="https://br.linkedin.com/in/rfdinstrucional?trk=profile-badge">Rafael Fernando</a>
+              </div>
+            </aside>
           </div>
         </div>
       </section>
