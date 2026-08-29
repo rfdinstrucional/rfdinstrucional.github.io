@@ -253,9 +253,6 @@ export function initAnimations() {
 
   // 9. Magnetic Buttons
   initMagneticButtons();
-
-  // 10. Cyber Glitch for Nav Items & Contact Buttons
-  initGlitchEffects();
 }
 
 /**
@@ -341,243 +338,9 @@ function initMagneticButtons() {
 }
 
 /**
- * Terminal Character Scramble & Chromatic Cyber Glitch
- */
-const GLITCH_CHARS = '_X10/#<>{}~$!*';
-
-function scrambleText(el, originalText, duration = 480) {
-  if (el._scrambleTimer) clearInterval(el._scrambleTimer);
-
-  const length = originalText.length;
-  const startTime = Date.now();
-
-  el._scrambleTimer = setInterval(() => {
-    const elapsed = Date.now() - startTime;
-    const progress = Math.min(1, elapsed / duration);
-    const resolvedCharsCount = Math.floor(progress * length);
-
-    let result = '';
-    for (let i = 0; i < length; i++) {
-      if (originalText[i] === ' ' || originalText[i] === '\n') {
-        result += originalText[i];
-      } else if (i < resolvedCharsCount) {
-        result += originalText[i];
-      } else {
-        result += GLITCH_CHARS[Math.floor(Math.random() * GLITCH_CHARS.length)];
-      }
-    }
-
-    el.textContent = result;
-
-    if (progress >= 1) {
-      clearInterval(el._scrambleTimer);
-      el._scrambleTimer = null;
-      el.textContent = originalText;
-    }
-  }, 35);
-}
-
-function triggerGlitch(el) {
-  if (prefersReducedMotion) return;
-
-  const currentText = el.textContent.trim();
-  // Only scramble if it has text and no image/svg
-  if (currentText && !el.querySelector('img, svg')) {
-    scrambleText(el, currentText, 480);
-  }
-
-  // Chromatic and cyber glitch flash (slower and deliberate)
-  gsap.killTweensOf(el, 'skewX,textShadow,filter,boxShadow');
-  const tl = gsap.timeline({
-    onComplete: () => {
-      gsap.set(el, { clearProps: 'skewX,textShadow,filter,boxShadow' });
-    }
-  });
-
-  tl.to(el, {
-    skewX: 6,
-    textShadow: '2.5px 0 #8ddca4, -2.5px 0 #ff0055',
-    boxShadow: '0 0 12px rgba(141, 220, 164, 0.45)',
-    filter: 'brightness(1.5) contrast(1.2)',
-    duration: 0.08,
-    ease: 'steps(1)'
-  })
-  .to(el, {
-    skewX: -5,
-    textShadow: '-2.5px 0 #00ffff, 2.5px 0 #ff0055',
-    filter: 'brightness(0.85)',
-    duration: 0.09,
-    ease: 'steps(1)'
-  })
-  .to(el, {
-    skewX: 3,
-    textShadow: '2px 0 #8ddca4, -2px 0 #ffffff',
-    filter: 'brightness(1.35)',
-    duration: 0.1,
-    ease: 'steps(1)'
-  })
-  .to(el, {
-    skewX: -1,
-    textShadow: '1px 0 rgba(141,220,164,0.7), -1px 0 rgba(255,255,255,0.7)',
-    duration: 0.1,
-    ease: 'steps(1)'
-  })
-  .to(el, {
-    skewX: 0,
-    textShadow: 'none',
-    boxShadow: 'none',
-    filter: 'none',
-    duration: 0.1,
-    ease: 'power1.out'
-  });
-}
-
-function initGlitchEffects() {
-  // Navigation links, contact buttons, lang toggle, and modal close button
-  const glitchTargets = document.querySelectorAll('.nav a, .contact-links a, .lang-toggle, .modal-close');
-
-  glitchTargets.forEach((el) => {
-    // Only on hover (mouseenter), not on click
-    el.addEventListener('mouseenter', () => triggerGlitch(el));
-  });
-}
-
-/**
- * Animate modal opening with CRT TV / Signal Beam + Glitch effect
- * (Center dot -> Expands horizontally to beam -> Unfolds vertically WHILE glitching simultaneously)
+ * Animate modal opening (clean, smooth expansion)
  */
 export function animateModalOpen(modalEl, onComplete) {
-  if (prefersReducedMotion) {
-    if (onComplete) onComplete();
-    return;
-  }
-
-  const backdrop = modalEl.querySelector('.modal-backdrop');
-  const windowEl = modalEl.querySelector('.modal-window');
-  const contentEls = windowEl ? windowEl.querySelectorAll('.modal-sticky, .modal-gallery, .modal-video, .modal-desc, .modal-actions') : [];
-
-  gsap.killTweensOf([backdrop, windowEl, contentEls]);
-
-  const tl = gsap.timeline({
-    onComplete: () => {
-      // Clean up inline filters and transforms after animation completes
-      if (windowEl) {
-        gsap.set(windowEl, { clearProps: 'filter,x,skewX,scaleX,scaleY' });
-      }
-      if (onComplete) onComplete();
-    }
-  });
-
-  // Initial setup: start as a tiny centered dot/beam with high brightness
-  if (backdrop) {
-    tl.fromTo(backdrop, { opacity: 0 }, { opacity: 1, duration: 0.3, ease: 'power2.out' }, 0);
-  }
-
-  if (windowEl) {
-    tl.set(windowEl, {
-      opacity: 0,
-      scaleX: 0.002,
-      scaleY: 0.004,
-      x: 0,
-      skewX: 0,
-      transformOrigin: 'center center',
-      filter: 'brightness(3) contrast(1.5)'
-    }, 0);
-
-    // Step 1: Open horizontally as a thin, intense beam of light
-    tl.to(windowEl, {
-      opacity: 1,
-      scaleX: 1,
-      scaleY: 0.005,
-      duration: 0.2,
-      ease: 'power3.inOut'
-    }, 0.04);
-
-    // Step 2: Unfold vertically (0.24s - 0.58s)
-    tl.to(windowEl, {
-      scaleY: 1.02,
-      duration: 0.32,
-      ease: 'power3.out'
-    }, 0.24);
-
-    tl.to(windowEl, {
-      scaleY: 1.0,
-      duration: 0.08,
-      ease: 'power2.out'
-    }, 0.56);
-
-    // Step 3: Cyber Glitch / Signal Flicker happening SIMULTANEOUSLY DURING the vertical opening
-    tl.to(windowEl, {
-      x: -6,
-      skewX: 4,
-      filter: 'brightness(2.2) hue-rotate(90deg) contrast(1.4)',
-      duration: 0.06,
-      ease: 'steps(1)'
-    }, 0.24);
-
-    tl.to(windowEl, {
-      x: 6,
-      skewX: -5,
-      filter: 'brightness(0.75) hue-rotate(-60deg)',
-      duration: 0.06,
-      ease: 'steps(1)'
-    }, 0.30);
-
-    tl.to(windowEl, {
-      x: -4,
-      skewX: 3,
-      filter: 'brightness(1.8) hue-rotate(45deg)',
-      duration: 0.07,
-      ease: 'steps(1)'
-    }, 0.36);
-
-    tl.to(windowEl, {
-      x: 3,
-      skewX: -2,
-      filter: 'brightness(0.85) hue-rotate(-30deg)',
-      duration: 0.07,
-      ease: 'steps(1)'
-    }, 0.43);
-
-    tl.to(windowEl, {
-      x: -1,
-      skewX: 1,
-      filter: 'brightness(1.3) hue-rotate(0deg)',
-      duration: 0.06,
-      ease: 'steps(1)'
-    }, 0.50);
-
-    tl.to(windowEl, {
-      x: 0,
-      skewX: 0,
-      filter: 'brightness(1)',
-      duration: 0.08,
-      ease: 'power1.out'
-    }, 0.56);
-  }
-
-  // Step 4: Stagger in inner content cleanly as the screen unfolds
-  if (contentEls.length) {
-    tl.fromTo(
-      contentEls,
-      { opacity: 0, y: 12 },
-      {
-        opacity: 1,
-        y: 0,
-        duration: 0.35,
-        stagger: 0.04,
-        ease: 'power2.out'
-      },
-      0.44
-    );
-  }
-}
-
-/**
- * Animate modal closing with CRT TV / Signal Collapse + Glitch effect
- * (Glitch flicker -> Collapses vertically to beam -> Collapses horizontally to dot -> Off)
- */
-export function animateModalClose(modalEl, onComplete) {
   if (prefersReducedMotion) {
     if (onComplete) onComplete();
     return;
@@ -598,60 +361,84 @@ export function animateModalClose(modalEl, onComplete) {
     }
   });
 
-  // Step 1: Micro glitch & content quick fade out
+  if (backdrop) {
+    tl.fromTo(backdrop, { opacity: 0 }, { opacity: 1, duration: 0.3, ease: 'power2.out' }, 0);
+  }
+
   if (windowEl) {
-    tl.set(windowEl, { transformOrigin: 'center center' }, 0);
-
-    tl.to(windowEl, {
-      x: 4,
-      filter: 'brightness(1.8) hue-rotate(90deg)',
-      duration: 0.04,
-      ease: 'steps(1)'
-    }, 0);
-
-    tl.to(windowEl, {
-      x: -3,
-      filter: 'brightness(1.4) hue-rotate(-30deg)',
-      duration: 0.04,
-      ease: 'steps(1)'
-    }, 0.04);
+    tl.fromTo(
+      windowEl,
+      {
+        opacity: 0,
+        scale: 0.94,
+        y: 20,
+        transformOrigin: 'center center'
+      },
+      {
+        opacity: 1,
+        scale: 1,
+        y: 0,
+        duration: 0.4,
+        ease: 'power3.out'
+      },
+      0
+    );
   }
 
   if (contentEls.length) {
-    tl.to(contentEls, {
+    tl.fromTo(
+      contentEls,
+      { opacity: 0, y: 12 },
+      {
+        opacity: 1,
+        y: 0,
+        duration: 0.35,
+        stagger: 0.04,
+        ease: 'power2.out'
+      },
+      0.1
+    );
+  }
+}
+
+/**
+ * Animate modal closing (clean, smooth exit)
+ */
+export function animateModalClose(modalEl, onComplete) {
+  if (prefersReducedMotion) {
+    if (onComplete) onComplete();
+    return;
+  }
+
+  const backdrop = modalEl.querySelector('.modal-backdrop');
+  const windowEl = modalEl.querySelector('.modal-window');
+
+  gsap.killTweensOf([backdrop, windowEl]);
+
+  const tl = gsap.timeline({
+    onComplete: () => {
+      if (windowEl) {
+        gsap.set(windowEl, { clearProps: 'all' });
+      }
+      if (onComplete) onComplete();
+    }
+  });
+
+  if (windowEl) {
+    tl.to(windowEl, {
       opacity: 0,
-      duration: 0.06,
-      ease: 'power1.in'
+      scale: 0.96,
+      y: 15,
+      duration: 0.22,
+      ease: 'power2.in'
     }, 0);
   }
 
-  if (windowEl) {
-    // Step 2: Collapse vertically into thin horizontal beam
-    tl.to(windowEl, {
-      scaleY: 0.005,
-      scaleX: 1,
-      x: 0,
-      filter: 'brightness(3) contrast(2)',
-      duration: 0.16,
-      ease: 'power4.in'
-    }, 0.08);
-
-    // Step 3: Collapse horizontally into a point and vanish
-    tl.to(windowEl, {
-      scaleX: 0,
-      scaleY: 0,
-      opacity: 0,
-      duration: 0.14,
-      ease: 'power3.in'
-    }, 0.24);
-  }
-
-  // Step 4: Fade out backdrop
   if (backdrop) {
     tl.to(backdrop, {
       opacity: 0,
       duration: 0.22,
       ease: 'power2.in'
-    }, 0.16);
+    }, 0.04);
   }
 }
