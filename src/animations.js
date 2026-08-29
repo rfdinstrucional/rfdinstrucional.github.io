@@ -345,7 +345,7 @@ function initMagneticButtons() {
  */
 const GLITCH_CHARS = '_X10/#<>{}~$!*';
 
-function scrambleText(el, originalText, duration = 240) {
+function scrambleText(el, originalText, duration = 480) {
   if (el._scrambleTimer) clearInterval(el._scrambleTimer);
 
   const length = originalText.length;
@@ -374,7 +374,7 @@ function scrambleText(el, originalText, duration = 240) {
       el._scrambleTimer = null;
       el.textContent = originalText;
     }
-  }, 28);
+  }, 35);
 }
 
 function triggerGlitch(el) {
@@ -383,10 +383,10 @@ function triggerGlitch(el) {
   const currentText = el.textContent.trim();
   // Only scramble if it has text and no image/svg
   if (currentText && !el.querySelector('img, svg')) {
-    scrambleText(el, currentText, 240);
+    scrambleText(el, currentText, 480);
   }
 
-  // Chromatic and cyber glitch flash
+  // Chromatic and cyber glitch flash (slower and deliberate)
   gsap.killTweensOf(el, 'skewX,textShadow,filter,boxShadow');
   const tl = gsap.timeline({
     onComplete: () => {
@@ -396,24 +396,30 @@ function triggerGlitch(el) {
 
   tl.to(el, {
     skewX: 6,
-    textShadow: '2px 0 #8ddca4, -2px 0 #ff0055',
-    boxShadow: '0 0 10px rgba(141, 220, 164, 0.45)',
+    textShadow: '2.5px 0 #8ddca4, -2.5px 0 #ff0055',
+    boxShadow: '0 0 12px rgba(141, 220, 164, 0.45)',
     filter: 'brightness(1.5) contrast(1.2)',
-    duration: 0.04,
+    duration: 0.08,
     ease: 'steps(1)'
   })
   .to(el, {
-    skewX: -4,
-    textShadow: '-2px 0 #00ffff, 2px 0 #ff0055',
-    filter: 'brightness(0.9)',
-    duration: 0.04,
+    skewX: -5,
+    textShadow: '-2.5px 0 #00ffff, 2.5px 0 #ff0055',
+    filter: 'brightness(0.85)',
+    duration: 0.09,
     ease: 'steps(1)'
   })
   .to(el, {
-    skewX: 2,
-    textShadow: '1.5px 0 #8ddca4, -1.5px 0 #ffffff',
-    filter: 'brightness(1.3)',
-    duration: 0.04,
+    skewX: 3,
+    textShadow: '2px 0 #8ddca4, -2px 0 #ffffff',
+    filter: 'brightness(1.35)',
+    duration: 0.1,
+    ease: 'steps(1)'
+  })
+  .to(el, {
+    skewX: -1,
+    textShadow: '1px 0 rgba(141,220,164,0.7), -1px 0 rgba(255,255,255,0.7)',
+    duration: 0.1,
     ease: 'steps(1)'
   })
   .to(el, {
@@ -421,23 +427,24 @@ function triggerGlitch(el) {
     textShadow: 'none',
     boxShadow: 'none',
     filter: 'none',
-    duration: 0.08,
+    duration: 0.1,
     ease: 'power1.out'
   });
 }
 
 function initGlitchEffects() {
-  const glitchTargets = document.querySelectorAll('.nav a, .contact-links a, .lang-toggle');
+  // Navigation links, contact buttons, lang toggle, and modal close button
+  const glitchTargets = document.querySelectorAll('.nav a, .contact-links a, .lang-toggle, .modal-close');
 
   glitchTargets.forEach((el) => {
+    // Only on hover (mouseenter), not on click
     el.addEventListener('mouseenter', () => triggerGlitch(el));
-    el.addEventListener('focus', () => triggerGlitch(el));
   });
 }
 
 /**
  * Animate modal opening with CRT TV / Signal Beam + Glitch effect
- * (Center dot -> Expands horizontally to beam -> Unfolds vertically -> Cyber Glitch flicker)
+ * (Center dot -> Expands horizontally to beam -> Unfolds vertically WHILE glitching simultaneously)
  */
 export function animateModalOpen(modalEl, onComplete) {
   if (prefersReducedMotion) {
@@ -455,7 +462,7 @@ export function animateModalOpen(modalEl, onComplete) {
     onComplete: () => {
       // Clean up inline filters and transforms after animation completes
       if (windowEl) {
-        gsap.set(windowEl, { clearProps: 'filter,x,scaleX,scaleY' });
+        gsap.set(windowEl, { clearProps: 'filter,x,skewX,scaleX,scaleY' });
       }
       if (onComplete) onComplete();
     }
@@ -463,7 +470,7 @@ export function animateModalOpen(modalEl, onComplete) {
 
   // Initial setup: start as a tiny centered dot/beam with high brightness
   if (backdrop) {
-    tl.fromTo(backdrop, { opacity: 0 }, { opacity: 1, duration: 0.25, ease: 'power2.out' }, 0);
+    tl.fromTo(backdrop, { opacity: 0 }, { opacity: 1, duration: 0.3, ease: 'power2.out' }, 0);
   }
 
   if (windowEl) {
@@ -472,6 +479,7 @@ export function animateModalOpen(modalEl, onComplete) {
       scaleX: 0.002,
       scaleY: 0.004,
       x: 0,
+      skewX: 0,
       transformOrigin: 'center center',
       filter: 'brightness(3) contrast(1.5)'
     }, 0);
@@ -481,67 +489,86 @@ export function animateModalOpen(modalEl, onComplete) {
       opacity: 1,
       scaleX: 1,
       scaleY: 0.005,
-      duration: 0.18,
+      duration: 0.2,
       ease: 'power3.inOut'
-    }, 0.05);
+    }, 0.04);
 
-    // Step 2: Unfold vertically to full height with slight CRT bounce
+    // Step 2: Unfold vertically (0.24s - 0.58s)
     tl.to(windowEl, {
-      scaleY: 1.03,
-      filter: 'brightness(1.6) contrast(1.2)',
-      duration: 0.22,
-      ease: 'power4.out'
-    }, 0.23);
+      scaleY: 1.02,
+      duration: 0.32,
+      ease: 'power3.out'
+    }, 0.24);
 
     tl.to(windowEl, {
       scaleY: 1.0,
       duration: 0.08,
       ease: 'power2.out'
-    }, 0.45);
+    }, 0.56);
 
-    // Step 3: Cyber Glitch / Signal Flicker Burst
+    // Step 3: Cyber Glitch / Signal Flicker happening SIMULTANEOUSLY DURING the vertical opening
+    tl.to(windowEl, {
+      x: -6,
+      skewX: 4,
+      filter: 'brightness(2.2) hue-rotate(90deg) contrast(1.4)',
+      duration: 0.06,
+      ease: 'steps(1)'
+    }, 0.24);
+
+    tl.to(windowEl, {
+      x: 6,
+      skewX: -5,
+      filter: 'brightness(0.75) hue-rotate(-60deg)',
+      duration: 0.06,
+      ease: 'steps(1)'
+    }, 0.30);
+
     tl.to(windowEl, {
       x: -4,
-      filter: 'brightness(1.8) hue-rotate(90deg)',
-      duration: 0.04,
+      skewX: 3,
+      filter: 'brightness(1.8) hue-rotate(45deg)',
+      duration: 0.07,
       ease: 'steps(1)'
-    }, 0.48);
+    }, 0.36);
 
     tl.to(windowEl, {
       x: 3,
-      filter: 'brightness(0.85) hue-rotate(-45deg)',
-      duration: 0.04,
+      skewX: -2,
+      filter: 'brightness(0.85) hue-rotate(-30deg)',
+      duration: 0.07,
       ease: 'steps(1)'
-    }, 0.52);
+    }, 0.43);
 
     tl.to(windowEl, {
-      x: -2,
-      filter: 'brightness(1.4) hue-rotate(0deg)',
-      duration: 0.04,
+      x: -1,
+      skewX: 1,
+      filter: 'brightness(1.3) hue-rotate(0deg)',
+      duration: 0.06,
       ease: 'steps(1)'
-    }, 0.56);
+    }, 0.50);
 
     tl.to(windowEl, {
       x: 0,
+      skewX: 0,
       filter: 'brightness(1)',
-      duration: 0.06,
+      duration: 0.08,
       ease: 'power1.out'
-    }, 0.6);
+    }, 0.56);
   }
 
-  // Step 4: Stagger in inner content cleanly right after unfolding
+  // Step 4: Stagger in inner content cleanly as the screen unfolds
   if (contentEls.length) {
     tl.fromTo(
       contentEls,
-      { opacity: 0, y: 10 },
+      { opacity: 0, y: 12 },
       {
         opacity: 1,
         y: 0,
-        duration: 0.3,
-        stagger: 0.03,
+        duration: 0.35,
+        stagger: 0.04,
         ease: 'power2.out'
       },
-      0.38
+      0.44
     );
   }
 }
