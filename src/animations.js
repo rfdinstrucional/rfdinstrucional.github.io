@@ -253,6 +253,9 @@ export function initAnimations() {
 
   // 9. Magnetic Buttons
   initMagneticButtons();
+
+  // 10. Cyber Glitch for Nav Items & Contact Buttons
+  initGlitchEffects();
 }
 
 /**
@@ -334,6 +337,101 @@ function initMagneticButtons() {
         ease: 'elastic.out(1, 0.4)'
       });
     });
+  });
+}
+
+/**
+ * Terminal Character Scramble & Chromatic Cyber Glitch
+ */
+const GLITCH_CHARS = '_X10/#<>{}~$!*';
+
+function scrambleText(el, originalText, duration = 240) {
+  if (el._scrambleTimer) clearInterval(el._scrambleTimer);
+
+  const length = originalText.length;
+  const startTime = Date.now();
+
+  el._scrambleTimer = setInterval(() => {
+    const elapsed = Date.now() - startTime;
+    const progress = Math.min(1, elapsed / duration);
+    const resolvedCharsCount = Math.floor(progress * length);
+
+    let result = '';
+    for (let i = 0; i < length; i++) {
+      if (originalText[i] === ' ' || originalText[i] === '\n') {
+        result += originalText[i];
+      } else if (i < resolvedCharsCount) {
+        result += originalText[i];
+      } else {
+        result += GLITCH_CHARS[Math.floor(Math.random() * GLITCH_CHARS.length)];
+      }
+    }
+
+    el.textContent = result;
+
+    if (progress >= 1) {
+      clearInterval(el._scrambleTimer);
+      el._scrambleTimer = null;
+      el.textContent = originalText;
+    }
+  }, 28);
+}
+
+function triggerGlitch(el) {
+  if (prefersReducedMotion) return;
+
+  const currentText = el.textContent.trim();
+  // Only scramble if it has text and no image/svg
+  if (currentText && !el.querySelector('img, svg')) {
+    scrambleText(el, currentText, 240);
+  }
+
+  // Chromatic and cyber glitch flash
+  gsap.killTweensOf(el, 'skewX,textShadow,filter,boxShadow');
+  const tl = gsap.timeline({
+    onComplete: () => {
+      gsap.set(el, { clearProps: 'skewX,textShadow,filter,boxShadow' });
+    }
+  });
+
+  tl.to(el, {
+    skewX: 6,
+    textShadow: '2px 0 #8ddca4, -2px 0 #ff0055',
+    boxShadow: '0 0 10px rgba(141, 220, 164, 0.45)',
+    filter: 'brightness(1.5) contrast(1.2)',
+    duration: 0.04,
+    ease: 'steps(1)'
+  })
+  .to(el, {
+    skewX: -4,
+    textShadow: '-2px 0 #00ffff, 2px 0 #ff0055',
+    filter: 'brightness(0.9)',
+    duration: 0.04,
+    ease: 'steps(1)'
+  })
+  .to(el, {
+    skewX: 2,
+    textShadow: '1.5px 0 #8ddca4, -1.5px 0 #ffffff',
+    filter: 'brightness(1.3)',
+    duration: 0.04,
+    ease: 'steps(1)'
+  })
+  .to(el, {
+    skewX: 0,
+    textShadow: 'none',
+    boxShadow: 'none',
+    filter: 'none',
+    duration: 0.08,
+    ease: 'power1.out'
+  });
+}
+
+function initGlitchEffects() {
+  const glitchTargets = document.querySelectorAll('.nav a, .contact-links a, .lang-toggle');
+
+  glitchTargets.forEach((el) => {
+    el.addEventListener('mouseenter', () => triggerGlitch(el));
+    el.addEventListener('focus', () => triggerGlitch(el));
   });
 }
 
