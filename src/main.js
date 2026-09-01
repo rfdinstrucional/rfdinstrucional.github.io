@@ -194,7 +194,9 @@ if (langToggle) {
   langToggle.addEventListener('click', () => {
     currentLang = currentLang === 'pt' ? 'en' : 'pt';
     localStorage.setItem('lang', currentLang);
-applyTranslations();
+    applyTranslations();
+  });
+}
 
 /* ---------- mobile nav toggle ---------- */
 const navToggle = document.querySelector('.nav-toggle');
@@ -242,8 +244,6 @@ if (navToggle && navLinksPanel) {
 
   window.addEventListener('resize', () => {
     if (window.innerWidth > 720 && navLinksPanel.classList.contains('open')) toggleNav(false);
-  });
-}
   });
 }
 
