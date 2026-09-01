@@ -157,12 +157,21 @@
 
     <header class="site-header">
       <nav class="nav" aria-label="Main navigation">
-        <a href="#about" data-i18n="nav.about">SOBRE</a>
-        <a href="#services" data-i18n="nav.services">SERVIÇOS</a>
-        <a href="#portfolio" data-i18n="nav.portfolio">PORTFOLIO</a>
-        <a href="#clients" data-i18n="nav.clients">CLIENTES</a>
-        <a href="#contact" data-i18n="nav.contact">CONTATO</a>
-        <button class="lang-toggle" type="button" aria-label="Switch language" data-i18n-aria="lang.aria"><img src="/flag-us.svg" alt="US" width="20" height="12" /></button>
+        <div class="nav-links" id="nav-links">
+          <a href="#about" data-i18n="nav.about">SOBRE</a>
+          <a href="#services" data-i18n="nav.services">SERVIÇOS</a>
+          <a href="#portfolio" data-i18n="nav.portfolio">PORTFOLIO</a>
+          <a href="#clients" data-i18n="nav.clients">CLIENTES</a>
+          <a href="#contact" data-i18n="nav.contact">CONTATO</a>
+        </div>
+        <div class="nav-controls">
+          <button class="lang-toggle" type="button" aria-label="Switch language" data-i18n-aria="lang.aria"><img src="/flag-us.svg" alt="US" width="20" height="12" /></button>
+          <button class="nav-toggle" type="button" aria-label="Abrir menu" aria-expanded="false" aria-controls="nav-links">
+            <span class="nav-toggle-bar" aria-hidden="true"></span>
+            <span class="nav-toggle-bar" aria-hidden="true"></span>
+            <span class="nav-toggle-bar" aria-hidden="true"></span>
+          </button>
+        </div>
       </nav>
     </header>
 

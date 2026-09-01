@@ -87,7 +87,46 @@ main, footer.site-footer {
   -webkit-backdrop-filter: blur(10px);
 }
 
-.nav { display: flex; gap: clamp(0.75rem, 2.5vw, 2rem); }
+.nav {
+  display: flex;
+  align-items: center;
+  gap: clamp(0.75rem, 2.5vw, 2rem);
+}
+
+.nav-links { display: flex; gap: clamp(0.75rem, 2.5vw, 2rem); }
+
+.nav-controls {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.nav-toggle {
+  display: none;
+  appearance: none;
+  background: transparent;
+  border: 1px solid var(--line);
+  width: 32px;
+  height: 32px;
+  padding: 0;
+  cursor: pointer;
+  place-items: center;
+  transition: border-color var(--t-fast) ease;
+}
+
+.nav-toggle:hover,
+.nav-toggle:focus-visible {
+  border-color: var(--line-strong);
+}
+
+.nav-toggle-bar {
+  display: block;
+  width: 14px;
+  height: 1.5px;
+  background: var(--fg);
+  margin: 1.5px auto;
+  transition: transform var(--t-fast) ease, opacity var(--t-fast) ease;
+}
 
 .cursor { animation: blink 1.1s steps(1) infinite; }
 @keyframes blink { 50% { opacity: 0; } }
@@ -1077,20 +1116,49 @@ a:focus-visible, button:focus-visible {
   .modal-head h3 { font-size: 16px; }
 
   .site-header {
-    height: auto;
-    padding: 8px 0.75rem;
+    height: 56px;
+    padding: 0 0.75rem;
   }
 
   .nav {
-    flex-wrap: wrap;
-    justify-content: center;
-    gap: 3px 6px;
+    width: 100%;
+    justify-content: space-between;
+    gap: 0;
   }
 
-  .nav a { font-size: 10px; letter-spacing: 0.12em; padding: 4px 6px; }
+  .nav-links {
+    position: fixed;
+    top: 56px;
+    left: 0;
+    right: 0;
+    flex-direction: column;
+    align-items: stretch;
+    gap: 0;
+    display: none;
+    background: linear-gradient(180deg, rgba(0, 0, 0, 0.97), rgba(0, 0, 0, 0.92));
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border-bottom: 1px solid var(--line);
+  }
+
+  .nav-links.open { display: flex; }
+
+  .nav-links a {
+    font-size: 12px;
+    letter-spacing: 0.18em;
+    padding: 14px clamp(1rem, 4vw, 2rem);
+    text-align: center;
+    border-top: 1px solid var(--line);
+  }
+
+  .nav-links a.active::after {
+    bottom: 6px;
+  }
+
+  .nav-toggle { display: grid; align-items: center; }
 
   main {
-    padding-top: calc(72px + 2rem);
+    padding-top: calc(56px + 2rem);
     padding-left: clamp(0.75rem, 3vw, 1.5rem);
     padding-right: clamp(0.75rem, 3vw, 1.5rem);
   }
@@ -1113,7 +1181,7 @@ a:focus-visible, button:focus-visible {
     gap: 3px;
   }
 
-  .section { scroll-margin-top: 90px; }
+  .section { scroll-margin-top: calc(56px + 1.5rem); }
 
   .service-card,
   .client-card {

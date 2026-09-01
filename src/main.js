@@ -194,7 +194,56 @@ if (langToggle) {
   langToggle.addEventListener('click', () => {
     currentLang = currentLang === 'pt' ? 'en' : 'pt';
     localStorage.setItem('lang', currentLang);
-    applyTranslations();
+applyTranslations();
+
+/* ---------- mobile nav toggle ---------- */
+const navToggle = document.querySelector('.nav-toggle');
+const navLinksPanel = document.getElementById('nav-links');
+
+function setNavLabel(isOpen) {
+  navToggle.setAttribute(
+    'aria-label',
+    isOpen
+      ? (currentLang === 'pt' ? 'Fechar menu' : 'Close menu')
+      : (currentLang === 'pt' ? 'Abrir menu' : 'Open menu')
+  );
+}
+
+function toggleNav(open) {
+  const isOpen = typeof open === 'boolean' ? open : !navLinksPanel.classList.contains('open');
+  navLinksPanel.classList.toggle('open', isOpen);
+  navToggle.setAttribute('aria-expanded', String(isOpen));
+  setNavLabel(isOpen);
+}
+
+if (navToggle && navLinksPanel) {
+  navToggle.addEventListener('click', (e) => {
+    e.stopPropagation();
+    toggleNav();
+  });
+
+  navLinksPanel.querySelectorAll('a').forEach((a) => {
+    a.addEventListener('click', () => toggleNav(false));
+  });
+
+  document.addEventListener('click', (e) => {
+    if (
+      navLinksPanel.classList.contains('open') &&
+      !navLinksPanel.contains(e.target) &&
+      !navToggle.contains(e.target)
+    ) {
+      toggleNav(false);
+    }
+  });
+
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape' && navLinksPanel.classList.contains('open')) toggleNav(false);
+  });
+
+  window.addEventListener('resize', () => {
+    if (window.innerWidth > 720 && navLinksPanel.classList.contains('open')) toggleNav(false);
+  });
+}
   });
 }
 
