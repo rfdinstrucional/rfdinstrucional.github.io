@@ -173,7 +173,9 @@ main, footer.site-footer {
   appearance: none;
   background: transparent;
   border: 1px solid var(--line);
-  padding: 3px 6px;
+  width: 32px;
+  height: 32px;
+  padding: 0;
   cursor: pointer;
   display: grid;
   place-items: center;
@@ -1122,9 +1124,11 @@ a:focus-visible, button:focus-visible {
 
   .nav {
     width: 100%;
-    justify-content: space-between;
+    justify-content: flex-end;
     gap: 0;
   }
+
+  .nav-controls { margin-left: auto; }
 
   .nav-links {
     position: fixed;
