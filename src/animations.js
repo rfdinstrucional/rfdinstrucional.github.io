@@ -323,7 +323,7 @@ function initPhotoShake() {
  * Magnetic button micro-interactions
  */
 function initMagneticButtons() {
-  const magneticEls = document.querySelectorAll('.contact-links a, .modal-close, .modal-lang, .lang-toggle');
+  const magneticEls = document.querySelectorAll('.contact-links a, .modal-close, .modal-lang');
 
   magneticEls.forEach((el) => {
     el.addEventListener('mousemove', (e) => {
